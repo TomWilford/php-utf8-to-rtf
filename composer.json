@@ -1,0 +1,22 @@
+{
+    "name": "tomwilford/package-name",
+    "description": "Description of package",
+    "keywords": [],
+    "homepage": "https://jollyblueman.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Wilford",
+            "homepage": "https://jollyblueman.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "hello@jollyblueman.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "PackageName\\Class\\": "src/"
+        }
+    }
+}
