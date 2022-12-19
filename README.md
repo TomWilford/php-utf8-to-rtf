@@ -1,22 +1,15 @@
 # Package Name
 ## Description
->_Say something once... why say it again?_
-
-This is a basic template for a package.
+A simple package for converting UTF8 characters to RTF format in PHP.
 
 ## Installation Instructions
-1. `git remote add template git@github.com:TomWilford/package-template.git`
-2. `git fetch template`
-3. `git merge --allow-unrelated-histories template/main`
-4. `git remote remove template`
+1. ??
    
 ## Usage Instructions
-1. Make a new project in github
-2. Merge follow the installation instructions
-3. Make a new package
+1. ??
 
 ## Testing Instructions
-Testing this works best when you run the code and then check what the results are.
+Use PHPUnit
 
 ## Contributing Instructions
 ??

@@ -1,6 +1,6 @@
 {
-    "name": "tomwilford/package-name",
-    "description": "Description of package",
+    "name": "tomwilford/php-utf8-to-rtf",
+    "description": "A simple package to convert UTF8 characters to RTF",
     "keywords": [],
     "homepage": "https://jollyblueman.com",
     "license": "BSD-3-Clause",
@@ -16,7 +16,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Wilf\\PackageName\\": "src/"
+            "Wilf\\PhpUtf8ToRtf\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }
