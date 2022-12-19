@@ -1,0 +1,22 @@
+{
+    "name": "tomwilford/package-name",
+    "description": "Description of package",
+    "keywords": [],
+    "homepage": "https://jollyblueman.com",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Tom Wilford",
+            "homepage": "https://jollyblueman.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "hello@jollyblueman.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wilf\\PackageName\\": "src/"
+        }
+    }
+}
