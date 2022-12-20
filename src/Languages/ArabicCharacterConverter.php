@@ -240,7 +240,7 @@ class ArabicCharacterConverter extends \Wilf\PhpUtf8ToRtf\CharacterConverterAbst
         $postfix = '';
         if ($rtfEscapeType == self::RTF_UNICODE) {
             $prefix = '{\\insrsid11888483\\charrsid11888483 ';
-            $postfix = '\\\'3f}';
+            $postfix = "\\'3f}";
         } elseif ($rtfEscapeType == self::RTF_HEXADECIMAL) {
             $prefix = '{\\f31574\\insrsid12286983\\charrsid12286983 ';
             $postfix = '}';
