@@ -2,35 +2,11 @@
 
 namespace Wilf\PhpUtf8ToRtf\Languages;
 
-class ArabicCharacterConverter implements \Wilf\PhpUtf8ToRtf\CharacterConverter
+class ArabicCharacterConverter extends \Wilf\PhpUtf8ToRtf\CharacterConverterAbstract
 {
     const LANGUAGE = 'arabic';
 
-    private string $pattern = '#(?:[\x{0600}-\x{06FF}]+(?:\s+[\x{0600}-\x{06FF}]+)*)#u';
-
-    public function locateWordsInString(string $string): array
-    {
-        preg_match_all($this->pattern, $string, $matches);
-
-        $words = [];
-        foreach ($matches[0] as $match) {
-            foreach (explode(' ', $match) as $item) {
-                $words[] = $item;
-            }
-        }
-
-        return $words;
-    }
-
-    public function convertWordsToRtf(array $words): array
-    {
-        $convertedWords = [];
-        foreach ($words as $word) {
-            $convertedWords[$word] = $this->convertWordToRtf($word);
-        }
-
-        return $convertedWords;
-    }
+    protected string $pattern = '#(?:[\x{0600}-\x{06FF}]+(?:\s+[\x{0600}-\x{06FF}]+)*)#u';
 
     public function convertWordToRtf(string $word): string
     {
@@ -47,14 +23,14 @@ class ArabicCharacterConverter implements \Wilf\PhpUtf8ToRtf\CharacterConverter
                 $iteration++;
 
                 if ($iteration == 1) {
-                    // Initial form
-                    $convertedWord .= $this->mapCharacterToRtfIdentifier($character);
-                } elseif ($iteration == $characterCount) {
                     // Final form
-                    $convertedWord .= $this->mapCharacterToRtfIdentifier($character);
+                    $convertedWord .= $this->mapFinalCharacterToRtfIdentifier($character);
+                } elseif ($iteration == $characterCount) {
+                    // Initial form
+                    $convertedWord .= $this->mapInitialCharacterToRtfIdentifier($character);
                 } else {
-                    // Middle form
-                    $convertedWord .= $this->mapCharacterToRtfIdentifier($character);
+                    // Medial form
+                    $convertedWord .= $this->mapMedialCharacterToRtfIdentifier($character);
                 }
             }
         }
@@ -64,165 +40,497 @@ class ArabicCharacterConverter implements \Wilf\PhpUtf8ToRtf\CharacterConverter
 
     public function mapCharacterToRtfIdentifier(string $character): string
     {
-        $escapedCharacter = '';
+        $rtfEscapeType = false;
 
         // Hexadecimal
         switch ($character) {
             case 'ء':
-                $escapedCharacter = "\\'c1";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'c1";
                 break;
             case 'غ':
-                $escapedCharacter = "\\'fd";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'fd";
                 break;
             case 'ظ':
-                $escapedCharacter = "\\'db";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'db";
                 break;
             case 'ض':
-                $escapedCharacter = "\\'d9";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d9";
                 break;
             case 'ذ':
-                $escapedCharacter = "\\'d6";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d6";
                 break;
             case 'ث':
-                $escapedCharacter = "\\'ce";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'ce";
                 break;
             case 'ت':
-                $escapedCharacter = "\\'cb";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'cb";
                 break;
             case 'ش':
-                $escapedCharacter = "\\'ca";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'ca";
                 break;
             case 'ر':
-                $escapedCharacter = "\\'d4";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d4";
                 break;
             case 'ق':
-                $escapedCharacter = "\\'d1";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d1";
                 break;
             case 'ص':
-                $escapedCharacter = "\\'de";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'de";
                 break;
             case 'ف':
-                $escapedCharacter = "\\'d5";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d5";
                 break;
             case 'ع':
-                $escapedCharacter = "\\'dd";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'dd";
                 break;
             case 'س':
-                $escapedCharacter = "\\'da";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'da";
                 break;
             case 'ن':
-                $escapedCharacter = "\\'d3";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d3";
                 break;
             case 'م':
-                $escapedCharacter = "\\'e4";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'e4";
                 break;
             case 'ل':
-                $escapedCharacter = "\\'e3";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'e3";
                 break;
             case 'ك':
-                $escapedCharacter = "\\'e1";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'e1";
                 break;
             case 'ي':
-                $escapedCharacter = "\\'ed";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'ed";
                 break;
             case 'ط':
-                $escapedCharacter = "\\'d8";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d8";
                 break;
             case 'ح':
-                $escapedCharacter = "\\'cd";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'cd";
                 break;
             case 'ز':
-                $escapedCharacter = "\\'d2";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'d2";
                 break;
             case 'و':
-                $escapedCharacter = "\\'e6";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'e6";
                 break;
             case 'ه':
-                $escapedCharacter = "\\'e5";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'e5";
                 break;
             case 'د':
-                $escapedCharacter = "\\'cf";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'cf";
                 break;
             case 'ج':
-                $escapedCharacter = "\\'cc";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'cc";
                 break;
             case 'ب':
-                $escapedCharacter = "\\'c8";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'c8";
                 break;
             case 'ا':
-                $escapedCharacter = "\\'c7";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'c7";
                 break;
             case '،':
-                $escapedCharacter = "\\'a1";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'a1";
                 break;
             case '؟':
-                $escapedCharacter = "\\'bf";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'bf";
                 break;
             case '؛':
-                $escapedCharacter = "\\'ba";
+                $rtfEscapeType = self::RTF_HEXADECIMAL;
+                $rtfIdentifier = "\\'ba";
+                break;
+            default:
+                // Unicode
+                switch ($character) {
+                    case '؍':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1549';
+                        break;
+                    case '؞':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1566';
+                        break;
+                    case '؉':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1545';
+                        break;
+                    case '؊':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1546';
+                        break;
+                    case '١':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1633';
+                        break;
+                    case '٢':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1634';
+                        break;
+                    case '٣':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1635';
+                        break;
+                    case '٤':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1636';
+                        break;
+                    case '٥':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1637';
+                        break;
+                    case '٦':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1638';
+                        break;
+                    case '٧':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1639';
+                        break;
+                    case '٨':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1640';
+                        break;
+                    case '٩':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1641';
+                        break;
+                    case '٫':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1643';
+                        break;
+                    case '٬':
+                        $rtfEscapeType = self::RTF_UNICODE;
+                        $rtfIdentifier = '\\u1644';
+                        break;
+                    default:
+                        $rtfIdentifier = $character;
+                }
+        }
+
+        $prefix = '';
+        $postfix = '';
+        if ($rtfEscapeType == self::RTF_UNICODE) {
+            $prefix = '{\\insrsid11888483\\charrsid11888483 ';
+            $postfix = '\\\'3f}';
+        } elseif ($rtfEscapeType == self::RTF_HEXADECIMAL) {
+            $prefix = '{\\f31574\\insrsid12286983\\charrsid12286983 ';
+            $postfix = '}';
+        }
+
+        return $prefix . $rtfIdentifier . $postfix;
+    }
+
+    public function mapInitialCharacterToRtfIdentifier(string $character): string
+    {
+        switch ($character) {
+            case 'ا':
+                $rtfIdentifier = "\\'c7";
+                break;
+            case 'بـ':
+                $rtfIdentifier = "\\'c8\\'dc";
+                break;
+            case 'تـ':
+                $rtfIdentifier = "\\'ca\\'dc";
+                break;
+            case 'ثـ':
+                $rtfIdentifier = "\\'cb\\'dc";
+                break;
+            case 'جـ':
+                $rtfIdentifier = "\\'cc\\'dc";
+                break;
+            case 'حـ':
+                $rtfIdentifier = "\\'cd\\'dc";
+                break;
+            case 'خـ':
+                $rtfIdentifier = "\\'ce\\'dc";
+                break;
+            case 'د':
+                $rtfIdentifier = "\\'cf";
+                break;
+            case 'ذ':
+                $rtfIdentifier = "\\'d0";
+                break;
+            case 'ر':
+                $rtfIdentifier = "\\'d1";
+                break;
+            case 'ز':
+                $rtfIdentifier = "\\'d2";
+                break;
+            case 'سـ':
+                $rtfIdentifier = "\\'d3\\'dc";
+                break;
+            case 'شـ':
+                $rtfIdentifier = "\\'d4\\'dc";
+                break;
+            case 'صـ':
+                $rtfIdentifier = "\\'d5\\'dc";
+                break;
+            case 'ضـ':
+                $rtfIdentifier = "\\'d6\\'dc";
+                break;
+            case 'طـ':
+                $rtfIdentifier = "\\'d8\\'dc";
+                break;
+            case 'ظـ':
+                $rtfIdentifier = "\\'d9\\'dc";
+                break;
+            case 'عـ':
+                $rtfIdentifier = "\\'da\\'dc";
+                break;
+            case 'غـ':
+                $rtfIdentifier = "\\'db\\'dc";
+                break;
+            case 'فـ':
+                $rtfIdentifier = "\\'dd\\'dc";
+                break;
+            case 'قـ':
+                $rtfIdentifier = "\\'de\\'dc";
+                break;
+            case 'كـ':
+                $rtfIdentifier = "\\'df\\'dc";
+                break;
+            case 'لـ':
+                $rtfIdentifier = "\\'e1\\'dc";
+                break;
+            case 'مـ':
+                $rtfIdentifier = "\\'e3\\'dc";
+                break;
+            case 'نـ':
+                $rtfIdentifier = "\\'e4\\'dc";
+                break;
+            case 'هـ':
+                $rtfIdentifier = "\\'e5\\'dc";
+                break;
+            case 'ـو':
+                $rtfIdentifier = "\\'dc\\'e6";
+                break;
+            case 'يـ':
+                $rtfIdentifier = "\\'ed\\'dc";
+                break;
+            default:
+                $rtfIdentifier = $character;
                 break;
         }
 
-        if ($escapedCharacter == "") {
-            switch ($character) {
-                case '؍':
-                    $escapedCharacter = '\\u1549';
-                    break;
-                case '؞':
-                    $escapedCharacter = '\\u1566';
-                    break;
-                case '؉':
-                    $escapedCharacter = '\\u1545';
-                    break;
-                case '؊':
-                    $escapedCharacter = '\\u1546';
-                    break;
-                case '١':
-                    $escapedCharacter = '\\u1633';
-                    break;
-                case '٢':
-                    $escapedCharacter = '\\u1634';
-                    break;
-                case '٣':
-                    $escapedCharacter = '\\u1635';
-                    break;
-                case '٤':
-                    $escapedCharacter = '\\u1636';
-                    break;
-                case '٥':
-                    $escapedCharacter = '\\u1637';
-                    break;
-                case '٦':
-                    $escapedCharacter = '\\u1638';
-                    break;
-                case '٧':
-                    $escapedCharacter = '\\u1639';
-                    break;
-                case '٨':
-                    $escapedCharacter = '\\u1640';
-                    break;
-                case '٩':
-                    $escapedCharacter = '\\u1641';
-                    break;
-                case '٫':
-                    $escapedCharacter = '\\u1643';
-                    break;
-                case '٬':
-                    $escapedCharacter = '\\u1644';
-                    break;
-            }
-
-            if ($escapedCharacter == '') {
-                $escapedCharacter = $character;
-            } else {
-                $escapedCharacter = '{\\insrsid11888483\\charrsid11888483 ' . $escapedCharacter . '\\\'3f}';
-            }
-        } else {
-            $escapedCharacter = '{\\f31574\\insrsid12286983\\charrsid12286983 ' . $escapedCharacter . '}';
-        }
-
-        return $escapedCharacter;
+        return "{\\rtlch\\fcs1 \\af31507 \\ltrch\\fcs0 \\f31574\\insrsid3087474 " . $rtfIdentifier . "}";
     }
 
+    public function mapFinalCharacterToRtfIdentifier(string $character): string
+    {
+        switch ($character) {
+            case 'ـا':
+                $rtfIdentifier = "\\'dc\\'c7";
+                break;
+            case 'ـب':
+                $rtfIdentifier = "\\'dc\\'c8";
+                break;
+            case 'ـت':
+                $rtfIdentifier = "\\'dc\\'ca";
+                break;
+            case 'ـث':
+                $rtfIdentifier = "\\'dc\\'cb";
+                break;
+            case 'ـج':
+                $rtfIdentifier = "\\'dc\\'cc";
+                break;
+            case 'ـح':
+                $rtfIdentifier = "\\'dc\\'cd";
+                break;
+            case 'ـخ':
+                $rtfIdentifier = "\\'dc\\'ce";
+                break;
+            case 'ـد':
+                $rtfIdentifier = "\\'dc\\'cf";
+                break;
+            case 'ـذ':
+                $rtfIdentifier = "\\'dc\\'d0";
+                break;
+            case 'ـر':
+                $rtfIdentifier = "\\'dc\\'d1";
+                break;
+            case 'ـز':
+                $rtfIdentifier = "\\'dc\\'d2";
+                break;
+            case 'ـس':
+                $rtfIdentifier = "\\'dc\\'d3";
+                break;
+            case 'ـش':
+                $rtfIdentifier = "\\'dc\\'d4";
+                break;
+            case 'ـص':
+                $rtfIdentifier = "\\'dc\\'d5";
+                break;
+            case 'ـض':
+                $rtfIdentifier = "\\'dc\\'d6";
+                break;
+            case 'ـط':
+                $rtfIdentifier = "\\'dc\\'d8";
+                break;
+            case 'ـظ':
+                $rtfIdentifier = "\\'dc\\'d9";
+                break;
+            case 'ـع':
+                $rtfIdentifier = "\\'dc\\'da";
+                break;
+            case 'ـغ':
+                $rtfIdentifier = "\\'dc\\'db";
+                break;
+            case 'ـف':
+                $rtfIdentifier = "\\'dc\\'dd";
+                break;
+            case 'ـق':
+                $rtfIdentifier = "\\'dc\\'de";
+                break;
+            case 'ـك':
+                $rtfIdentifier = "\\'dc\\'df";
+                break;
+            case 'ـل':
+                $rtfIdentifier = "\\'dc\\'e1";
+                break;
+            case 'ـم':
+                $rtfIdentifier = "\\'dc\\'e3";
+                break;
+            case 'ـن':
+                $rtfIdentifier = "\\'dc\\'e4";
+                break;
+            case 'ـه':
+                $rtfIdentifier = "\\'dc\\'e5";
+                break;
+            case 'و':
+                $rtfIdentifier = "\\'e6";
+                break;
+            case 'ـي':
+                $rtfIdentifier = "\\'fd";
+                break;
+            default:
+                $rtfIdentifier = $character;
+                break;
+        }
 
+        return "\\rtlch\\fcs1 \\af31507 \\ltrch\\fcs0 \\f31574\\insrsid3087474 " . $rtfIdentifier . "}";
+    }
+
+    public function mapMedialCharacterToRtfIdentifier(string $character): string
+    {
+        switch ($character) {
+            case 'ـا':
+                $rtfIdentifier = "\\'dc\\'c7";
+                break;
+            case 'ـبـ':
+                $rtfIdentifier = "\\'dc\\'c8\\'dc";
+                break;
+            case 'ـتـ':
+                $rtfIdentifier = "\\'dc\\'ca\\'dc";
+                break;
+            case 'ـثـ':
+                $rtfIdentifier = "\\'dc\\'cb\\'dc";
+                break;
+            case 'ـجـ':
+                $rtfIdentifier = "\\'dc\\'cc\\'dc";
+                break;
+            case 'ـحـ':
+                $rtfIdentifier = "\\'dc\\'cd\\'dc";
+                break;
+            case 'ـخـ':
+                $rtfIdentifier = "\\'dc\\'ce\\'dc";
+                break;
+            case 'ـد':
+                $rtfIdentifier = "\\'dc\\'cf";
+                break;
+            case 'ـذ':
+                $rtfIdentifier = "\\'dc\\'d0";
+                break;
+            case 'ـر':
+                $rtfIdentifier = "\\'dc\\'d1";
+                break;
+            case 'ـز':
+                $rtfIdentifier = "\\'dc\\'d2";
+                break;
+            case 'ـسـ':
+                $rtfIdentifier = "\\'dc\\'d3\\'dc";
+                break;
+            case 'ـشـ':
+                $rtfIdentifier = "\\'dc\\'d4\\'dc";
+                break;
+            case 'ـصـ':
+                $rtfIdentifier = "\\'dc\\'d5\\'dc";
+                break;
+            case 'ـضـ':
+                $rtfIdentifier = "\\'dc\\'d6\\'dc";
+                break;
+            case 'ـطـ':
+                $rtfIdentifier = "\\'dc\\'d8\\'dc";
+                break;
+            case 'ـظـ':
+                $rtfIdentifier = "\\'dc\\'d9\\'dc";
+                break;
+            case 'ـعـ':
+                $rtfIdentifier = "\\'dc\\'da\\'dc";
+                break;
+            case 'ـغـ':
+                $rtfIdentifier = "\\'dc\\'db\\'dc";
+                break;
+            case 'ـفـ':
+                $rtfIdentifier = "\\'dc\\'dd\\'dc";
+                break;
+            case 'ـقـ':
+                $rtfIdentifier = "\\'dc\\'de\\'dc";
+                break;
+            case 'ـكـ':
+                $rtfIdentifier = "\\'dc\\'df\\'dc";
+                break;
+            case 'ـلـ':
+                $rtfIdentifier = "\\'dc\\'e1\\'dc";
+                break;
+            case 'ـمـ':
+                $rtfIdentifier = "\\'dc\\'e3\\'dc";
+                break;
+            case 'ـنـ':
+                $rtfIdentifier = "\\'dc\\'e4\\'dc";
+                break;
+            case 'ـهـ':
+                $rtfIdentifier = "\\'dc\\'e5\\'dc";
+                break;
+            case 'ـو':
+                $rtfIdentifier = "\\'dc\\'e6";
+                break;
+            case 'ـيـ':
+                $rtfIdentifier = "\\'dc\\'ed\\'dc";
+                break;
+            default:
+                $rtfIdentifier = $character;
+                break;
+        }
+
+        return "{\\rtlch\\fcs1 \\af31507 \\ltrch\\fcs0 \\f31574\\insrsid3088106 " . $rtfIdentifier . "}";
+    }
 }
