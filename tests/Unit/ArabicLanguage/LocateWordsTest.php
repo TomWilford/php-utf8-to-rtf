@@ -4,7 +4,7 @@ namespace Unit\ArabicLanguage;
 
 use PHPUnit\Framework\TestCase;
 
-class LocateWordsTest extends TestCase
+final class LocateWordsTest extends TestCase
 {
     public function testForLocatingWordsInString(): void
     {
