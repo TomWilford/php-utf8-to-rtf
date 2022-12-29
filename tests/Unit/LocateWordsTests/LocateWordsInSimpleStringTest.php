@@ -10,6 +10,16 @@ final class LocateWordsInSimpleStringTest extends TestCase
     use Pangrams;
     public function testForNotLocatingRtfSafeCharacters(): void
     {
+        $string = "{ } ! ? # / \\";
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(0, $words);
+    }
+
+    public function testForNotLocatingEnglishInString(): void
+    {
         $string = $this->english;
 
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
