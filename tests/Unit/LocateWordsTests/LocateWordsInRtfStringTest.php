@@ -607,9 +607,9 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
         $this->assertCount(5, $words);
     }
 
-    public function testForLocatingPortugeseWordsInRtf(): void
+    public function testForLocatingPortugueseWordsInRtf(): void
     {
-        $string = $this->rtfStart . $this->portugese . $this->rtfEnd;
+        $string = $this->rtfStart . $this->portuguese . $this->rtfEnd;
 
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
@@ -747,9 +747,9 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
         $this->assertCount(4, $words);
     }
 
-    public function testForLocatingUkranianWordsInRtf(): void
+    public function testForLocatingUkrainianWordsInRtf(): void
     {
-        $string = $this->rtfStart . $this->ukranian . $this->rtfEnd;
+        $string = $this->rtfStart . $this->ukrainian . $this->rtfEnd;
 
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);

@@ -6,7 +6,7 @@ trait Pangrams
 {
     public string $english = "The quick brown fox jumps over the lazy dog!";
 
-    public string $arabic = "test نص حكيم له سر قاطع وذو شأن عظيم مكتوب test على ثوب أخضر ومغلف بجلد أزرق test test";
+    public string $arabic = "نص حكيم له سر قاطع وذو شأن عظيم مكتوب على ثوب أخضر ومغلف بجلد أزرق";
 
     public string $azeri = "Zəfər, jaketini də papağını da götür, bu axşam hava çox soyuq olacaq.";
 
@@ -82,7 +82,7 @@ trait Pangrams
 
     public string $polish = "Jeżu klątw, spłódź Finom część gry hańb!";
 
-    public string $portugese = "Luís argüia à Júlia que «brações, fé, chá, óxido, pôr, zângão» eram palavras do português.";
+    public string $portuguese = "Luís argüia à Júlia que «brações, fé, chá, óxido, pôr, zângão» eram palavras do português.";
 
     public string $romanian = "Muzicologă în bej vând whisky și tequila, preț fix.";
 
@@ -110,7 +110,7 @@ trait Pangrams
 
     public string $turkish = "Fahiş bluz güvencesi yağdırma projesi çöktü.";
 
-    public string $ukranian = "Чуєш їх, доцю, га? Кумедна ж ти, прощайся без ґольфів!";
+    public string $ukrainian = "Чуєш їх, доцю, га? Кумедна ж ти, прощайся без ґольфів!";
 
     public string $urdu = "ٹھنڈ میں، ایک قحط زدہ گاؤں سے گذرتے وقت ایک چڑچڑے، باأثر و فارغ شخص کو بعض جل پری نما اژدہے نظر آئے۔";
 

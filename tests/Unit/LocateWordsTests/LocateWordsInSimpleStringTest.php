@@ -408,9 +408,9 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $this->assertCount(5, $words);
     }
 
-    public function testForLocatingPortugeseWordsInString(): void
+    public function testForLocatingPortugueseWordsInString(): void
     {
-        $string = $this->portugese;
+        $string = $this->portuguese;
 
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
@@ -548,9 +548,9 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $this->assertCount(4, $words);
     }
 
-    public function testForLocatingUkranianWordsInString(): void
+    public function testForLocatingUkrainianWordsInString(): void
     {
-        $string = $this->ukranian;
+        $string = $this->ukrainian;
 
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
