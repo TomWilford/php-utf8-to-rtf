@@ -2,13 +2,51 @@
 
 namespace Wilf\PhpUtf8ToRtf;
 
-interface CharacterConverter
+class CharacterConverter implements CharacterConverterInterface
 {
-    public function locateWordsInString(string $string): array;
+    public function findAndReplace(string $string): string
+    {
+        // TODO: Implement findAndReplace() method.
+    }
 
-    public function convertWordsToRtf(array $words): array;
+    public function locateWordsInString(string $string): array
+    {
+        preg_match_all("/([\p{L}\d-]*[^ -~\n])/u", $string, $matches);
 
-    public function convertWordToRtf(string $word): string;
+        $words = [];
+        foreach ($matches[0] as $match) {
+            foreach (explode(' ', $match) as $item) {
+                $words[] = $item;
+            }
+        }
 
-    public function mapCharacterToRtfIdentifier(string $character): string;
+        return $words;
+    }
+
+    public function convertWordsToRtf(array $words): array
+    {
+        $convertedWords = [];
+        foreach ($words as $word) {
+            $convertedWords[$word] = $this->convertWordToRtf($word);
+        }
+
+        return $convertedWords;
+    }
+
+    public function convertWordToRtf(string $word): string
+    {
+        $rtf = "";
+        for ($i = 0; $i < mb_strlen($word, "UTF-8"); $i++) {
+            $char = mb_substr($word, $i, 1, "UTF-8");
+            $code = unpack("N", mb_convert_encoding($char, "UCS-4BE", "UTF-8"))[1];
+
+            if ($code < 0x7f) {
+                $rtf .= $char;
+            } else {
+                $rtf .= sprintf("\\u%d?", $code);
+            }
+        }
+
+        return $rtf;
+    }
 }
