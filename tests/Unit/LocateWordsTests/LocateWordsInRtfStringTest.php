@@ -1,24 +1,12 @@
 <?php
 
-namespace Unit\ArabicLanguage;
+namespace Unit\LocateWordsTests;
 
-use PHPUnit\Framework\TestCase;
+use Resources\Pangrams;
 
-final class LocateWordsTest extends TestCase
+final class LocateWordsInRtfStringTest extends \PHPUnit\Framework\TestCase
 {
-    public function testForLocatingWordsInString(): void
-    {
-        $string = "test نص حكيم له سر قاطع وذو شأن عظيم مكتوب test على ثوب أخضر ومغلف بجلد أزرق test test";
-
-        $converter = new \Wilf\PhpUtf8ToRtf\Languages\ArabicCharacterConverter();
-        $words = $converter->locateWordsInString($string);
-
-        $this->assertCount(15, $words);
-    }
-
-    public function testForLocatingWordsInRtf()
-    {
-        $rtf = '{\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff31507\deff0\stshfdbch31506\stshfloch31506\stshfhich31506\stshfbi31507\deflang2057\deflangfe2057\themelang2057\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria Math;}
+    protected string $rtfStart = '{\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff31507\deff0\stshfdbch31506\stshfloch31506\stshfhich31506\stshfbi31507\deflang2057\deflangfe2057\themelang2057\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria Math;}
 {\f37\fbidi \fswiss\fcharset0\fprq2{\*\panose 020f0502020204030204}Calibri;}{\flomajor\f31500\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
 {\fdbmajor\f31501\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\fhimajor\f31502\fbidi \fswiss\fcharset0\fprq2{\*\panose 020f0302020204030204}Calibri Light;}
 {\fbimajor\f31503\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\flominor\f31504\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
@@ -67,7 +55,8 @@ l}}\paperw11906\paperh16838\margl1440\margr1440\margt1440\margb1440\gutter0\ltrs
 \pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang 
 {\pntxtb (}{\pntxta )}}\pard\plain \ltrpar\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0 
 \f31506\fs22\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid12286983\charrsid12286983 test }{\rtlch\fcs1 \af31507 \ltrch\fcs0 \f31574\insrsid12286983\charrsid12286983 \'e4\'d5}{\rtlch\fcs1 \af31507 \ltrch\fcs0 
-\insrsid12286983\charrsid12286983  }test نص حكيم له سر قاطع وذو شأن عظيم مكتوب test على ثوب أخضر ومغلف بجلد أزرق test test{\*\themedata 504b030414000600080000002100e9de0fbfff0000001c020000130000005b436f6e74656e745f54797065735d2e786d6cac91cb4ec3301045f748fc83e52d4a
+\insrsid12286983\charrsid12286983  }';
+    protected string $rtfEnd = '{\*\themedata 504b030414000600080000002100e9de0fbfff0000001c020000130000005b436f6e74656e745f54797065735d2e786d6cac91cb4ec3301045f748fc83e52d4a
 9cb2400825e982c78ec7a27cc0c8992416c9d8b2a755fbf74cd25442a820166c2cd933f79e3be372bd1f07b5c3989ca74aaff2422b24eb1b475da5df374fd9ad
 5689811a183c61a50f98f4babebc2837878049899a52a57be670674cb23d8e90721f90a4d2fa3802cb35762680fd800ecd7551dc18eb899138e3c943d7e503b6
 b01d583deee5f99824e290b4ba3f364eac4a430883b3c092d4eca8f946c916422ecab927f52ea42b89a1cd59c254f919b0e85e6535d135a8de20f20b8c12c3b0
@@ -227,9 +216,584 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff000000000000000000000000000000000000000000000000
 0000000000000000000000000000000000000000000000000105000000000000}}';
 
-        $converter = new \Wilf\PhpUtf8ToRtf\Languages\ArabicCharacterConverter();
-        $words = $converter->locateWordsInString($rtf);
+    use Pangrams;
+    public function testForNotLocatingEnglishInRtf(): void
+    {
+        $string = $this->rtfStart . $this->english . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(0, $words);
+    }
+
+    public function testForLocatingArabicWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->arabic . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
 
         $this->assertCount(15, $words);
+    }
+
+    public function testForLocatingAzeriWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->azeri . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(6, $words);
+    }
+
+    public function testForLocatingBretonWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->breton . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(2, $words);
+    }
+
+    public function testForLocatingBulgarianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->bulgarian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(7, $words);
+    }
+
+    public function testForLocatingCatalanWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->catalan . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(14, $words);
+    }
+
+    public function testForLocatingChineseTraditionalWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->chineseTraditional . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(2, $words);
+    }
+
+    public function testForLocatingChineseSimplifiedWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->chineseSimplified . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(2, $words);
+    }
+
+    public function testForLocatingCzechWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->czech . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(8, $words);
+    }
+
+    public function testForLocatingDanishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->danish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(3, $words);
+    }
+
+    public function testForLocatingDzongkhaWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->dzongka . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(68, $words);
+    }
+
+    public function testForLocatingEsperantoWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->esperanto . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(4, $words);
+    }
+
+    public function testForLocatingEstonianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->estonian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(4, $words);
+    }
+
+    public function testForLocatingFinnishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->finnish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(1, $words);
+    }
+
+    public function testForLocatingFrenchWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->french . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(5, $words);
+    }
+
+    public function testForLocatingGermanWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->german . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(4, $words);
+    }
+
+    public function testForLocatingGreekWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->greek . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(18, $words);
+    }
+
+    public function testForLocatingHebrewWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->hebrew . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(26, $words);
+    }
+
+    public function testForLocatingHindiWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->hindi . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(54, $words);
+    }
+
+    public function testForLocatingHungarianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->hungarian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(9, $words);
+    }
+
+    public function testForLocatingIcelandicWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->icelandic . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(9, $words);
+    }
+
+    public function testForLocatingIgboWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->igbo . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(12, $words);
+    }
+
+    public function testForLocatingIndonesianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->indonesian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(0, $words);
+    }
+
+    public function testForLocatingIrishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->irish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(7, $words);
+    }
+
+    public function testForLocatingItalianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->italian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(0, $words);
+    }
+
+    public function testForLocatingJapaneseWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->japanese . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(9, $words);
+    }
+
+    public function testForLocatingJavaneseWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->javanese . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(5, $words);
+    }
+
+    public function testForLocatingKoreanWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->korean . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(9, $words);
+    }
+
+    public function testForLocatingLatinWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->latin . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(0, $words);
+    }
+
+    public function testForLocatingLatvianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->latvian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(6, $words);
+    }
+
+    public function testForLocatingLithuanianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->lithuanian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(6, $words);
+    }
+
+    public function testForLocatingLojbanWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->lojban . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(1, $words);
+    }
+
+    public function testForLocatingMacedonianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->macedonian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(13, $words);
+    }
+
+    public function testForLocatingMalayalamWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->malayalam . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(107, $words);
+    }
+
+    public function testForLocatingMapudungunWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->mapudungun . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(1, $words);
+    }
+
+    public function testForLocatingMongolianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->mongolian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(7, $words);
+    }
+
+    public function testForLocatingMyanmarWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->myanmar . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(46, $words);
+    }
+
+    public function testForLocatingNorwegianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->norwegian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(3, $words);
+    }
+
+    public function testForLocatingPolishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->polish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(5, $words);
+    }
+
+    public function testForLocatingPortugeseWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->portugese . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(12, $words);
+    }
+
+    public function testForLocatingRomanianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->romanian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(5, $words);
+    }
+
+    public function testForLocatingRussianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->russian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(9, $words);
+    }
+
+    public function testForLocatingSanscritWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->sanscrit . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(33, $words);
+    }
+
+    public function testForLocatingScottishGaelicWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->scottishGaelic . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(5, $words);
+    }
+
+    public function testForLocatingSerbianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->serbian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(4, $words);
+    }
+
+    public function testForLocatingSlovakWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->slovak . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(13, $words);
+    }
+
+    public function testForLocatingSlovenianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->slovenian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(1, $words);
+    }
+
+    public function testForLocatingSpanishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->spanish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(7, $words);
+    }
+
+    public function testForLocatingSwedishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->swedish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(3, $words);
+    }
+
+    public function testForLocatingTagalogWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->tagalog . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(1, $words);
+    }
+
+    public function testForLocatingThaiWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->thai . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(55, $words);
+    }
+
+    public function testForLocatingTibetanWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->tibetan . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(72, $words);
+    }
+
+    public function testForLocatingTurkishWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->turkish . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(4, $words);
+    }
+
+    public function testForLocatingUkranianWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->ukranian . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(10, $words);
+    }
+
+    public function testForLocatingUrduWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->urdu . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(23, $words);
+    }
+
+    public function testForLocatingUyghurWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->uyghur . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(10, $words);
+    }
+
+    public function testForLocatingYorubaWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->yoruba . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(15, $words);
+    }
+
+    public function testForLocatingWelshWordsInRtf(): void
+    {
+        $string = $this->rtfStart . $this->welsh . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(2, $words);
     }
 }
