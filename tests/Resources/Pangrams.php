@@ -2,6 +2,11 @@
 
 namespace Resources;
 
+/**
+ * A list of pangrams for testing, made possible by:
+ *  - Richard Rutter (majority), https://clagnut.com/blog/2380
+ *  - gacontuyenchien1 (Vietnamese), https://10fastfingers.com/text/212157-Vietnamese-pangram
+ */
 trait Pangrams
 {
     public string $english = "The quick brown fox jumps over the lazy dog!";
@@ -28,7 +33,7 @@ trait Pangrams
 
     public string $esperanto = "Eble ĉiu kvazaŭ-deca fuŝĥoraĵo ĝojigos homtipon";
 
-    public string $estonian = "Põdur Zagrebi tšellomängija-följetonist Ciqo külmetas kehvas garaažis ";
+    public string $estonian = "Põdur Zagrebi tšellomängija-följetonist Ciqo külmetas kehvas garaažis";
 
     public string $finnish = "Törkylempijävongahdus";
 

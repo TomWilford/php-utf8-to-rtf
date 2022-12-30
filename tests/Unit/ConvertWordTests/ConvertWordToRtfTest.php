@@ -4,7 +4,7 @@ namespace Unit\ConvertWordTests;
 
 use Resources\Pangrams;
 
-class ConvertWordToRtfTest extends \PHPUnit\Framework\TestCase
+final class ConvertWordToRtfTest extends \PHPUnit\Framework\TestCase
 {
     use Pangrams;
     public function testForNotConvertingEnglishInString(): void

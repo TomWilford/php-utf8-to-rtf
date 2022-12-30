@@ -55,7 +55,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(2, $words);
+        $this->assertCount(3, $words);
     }
 
     public function testForLocatingBulgarianWordsInString(): void
@@ -85,7 +85,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(2, $words);
+        $this->assertCount(1, $words);
     }
 
     public function testForLocatingChineseSimplifiedWordsInString(): void
@@ -95,7 +95,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(2, $words);
+        $this->assertCount(1, $words);
     }
 
     public function testForLocatingCzechWordsInString(): void
@@ -125,7 +125,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(68, $words);
+        $this->assertCount(4, $words);
     }
 
     public function testForLocatingEsperantoWordsInString(): void
@@ -145,7 +145,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(4, $words);
+        $this->assertCount(5, $words);
     }
 
     public function testForLocatingFinnishWordsInString(): void
@@ -205,7 +205,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(54, $words);
+        $this->assertCount(24, $words);
     }
 
     public function testForLocatingHungarianWordsInString(): void
@@ -275,7 +275,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(9, $words);
+        $this->assertCount(8, $words);
     }
 
     public function testForLocatingJavaneseWordsInString(): void
@@ -355,7 +355,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(107, $words);
+        $this->assertCount(32, $words);
     }
 
     public function testForLocatingMapudungunWordsInString(): void
@@ -385,7 +385,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(46, $words);
+        $this->assertCount(6, $words);
     }
 
     public function testForLocatingNorwegianWordsInString(): void
@@ -445,7 +445,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(33, $words);
+        $this->assertCount(6, $words);
     }
 
     public function testForLocatingScottishGaelicWordsInString(): void
@@ -455,7 +455,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(5, $words);
+        $this->assertCount(6, $words);
     }
 
     public function testForLocatingSerbianWordsInString(): void
@@ -525,7 +525,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(55, $words);
+        $this->assertCount(10, $words);
     }
 
     public function testForLocatingTibetanWordsInString(): void
@@ -535,7 +535,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(72, $words);
+        $this->assertCount(5, $words);
     }
 
     public function testForLocatingTurkishWordsInString(): void
@@ -585,7 +585,7 @@ final class LocateWordsInSimpleStringTest extends TestCase
         $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
         $words = $converter->locateWordsInString($string);
 
-        $this->assertCount(15, $words);
+        $this->assertCount(14, $words);
     }
 
     public function testForLocatingWelshWordsInString(): void
