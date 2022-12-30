@@ -597,4 +597,14 @@ final class LocateWordsInSimpleStringTest extends TestCase
 
         $this->assertCount(2, $words);
     }
+
+    public function testForLocatingVietnameseWordsInString(): void
+    {
+        $string = $this->vietnamese;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(34, $words);
+    }
 }

@@ -796,4 +796,14 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
 
         $this->assertCount(2, $words);
     }
+
+    public function testForLocatingVietnameseWordsInString(): void
+    {
+        $string = $this->rtfStart . $this->vietnamese . $this->rtfEnd;
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $words = $converter->locateWordsInString($string);
+
+        $this->assertCount(34, $words);
+    }
 }

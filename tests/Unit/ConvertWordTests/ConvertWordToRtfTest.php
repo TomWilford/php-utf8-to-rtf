@@ -586,4 +586,14 @@ class ConvertWordToRtfTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals("d\u373?r", $word);
     }
+
+    public function testForConvertingVietnameseWordInString(): void
+    {
+        $string = explode(' ', $this->vietnamese)[4];
+
+        $converter = new \Wilf\PhpUtf8ToRtf\CharacterConverter();
+        $word = $converter->convertWordToRtf($string);
+
+        $this->assertEquals("ng\u432?\u7901?i", $word);
+    }
 }

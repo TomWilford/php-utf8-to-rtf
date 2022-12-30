@@ -119,4 +119,6 @@ trait Pangrams
     public string $yoruba = "Ìwò̩fà ń yò̩ séji tó gbojúmó̩, ó hàn pákànpò̩ gan-an nis̩é̩ rè̩ bó dò̩la.";
 
     public string $welsh = "Parciais fy jac codi baw hud llawn dŵr ger tŷ Mabon.";
+
+    public string $vietnamese = "Trăm năm trong cõi người ta, chữ tài chữ phận khéo là ghét nhau. Trải qua một cuộc bể dâu, những điều trông thấy mà đau đớn lòng. Lạ gì bỉ sắc tư phong, trời xanh quen với má hồng đánh ghen.";
 }
