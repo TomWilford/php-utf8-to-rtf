@@ -6,12 +6,19 @@ class CharacterConverter implements CharacterConverterInterface
 {
     public function findAndReplace(string $string): string
     {
-        // TODO: Implement findAndReplace() method.
+        $wordsToConvert = $this->locateWordsInString($string);
+        $convertedWords = $this->convertWordsToRtf($wordsToConvert);
+
+        foreach ($convertedWords as $word => $convertedWord) {
+            $string = str_replace($word, '{' . $convertedWord . '}', $string);
+        }
+
+        return $string;
     }
 
     public function locateWordsInString(string $string): array
     {
-        preg_match_all("/([\p{L}\d-]*[^ -~\n])/u", $string, $matches);
+        preg_match_all("/(\p{L}*(?:[^ -~\n]+))/u", $string, $matches);
 
         $words = [];
         foreach ($matches[0] as $match) {
@@ -27,7 +34,9 @@ class CharacterConverter implements CharacterConverterInterface
     {
         $convertedWords = [];
         foreach ($words as $word) {
-            $convertedWords[$word] = $this->convertWordToRtf($word);
+            if (!array_key_exists($word, $convertedWords)) {
+                $convertedWords[$word] = $this->convertWordToRtf($word);
+            }
         }
 
         return $convertedWords;
