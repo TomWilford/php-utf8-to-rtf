@@ -43,7 +43,7 @@ Testing has been done with PHPUnit and a series of pangrams sourced online to tr
 as many characters as possible in different languages being used in a natural way. Please see the 
 [Pangrams trait](tests/Resources/Pangrams.php) for the pangram sources' credits.
 
-Currently, there are two failing tests for `findAndReplace()` whereby 3 characters are ignored by the 
+Currently, there are four failing tests for `findAndReplace()` whereby some characters are ignored by the 
 regex and not replaced during the conversion.
 
 ## Contributing
