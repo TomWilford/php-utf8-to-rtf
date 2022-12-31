@@ -184,7 +184,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on ום ע הם and תא
      */
-    /*public function testForConvertingSimpleHebrewString(): void
+    public function testForConvertingSimpleHebrewString(): void
     {
         $string = $this->hebrew;
 
@@ -192,7 +192,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedHebrew, $convertedString);
-    }*/
+    }
 
     public function testForConvertingSimpleHindiString(): void
     {
@@ -207,7 +207,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on í
      */
-    /*public function testForConvertingSimpleHungarianString(): void
+    public function testForConvertingSimpleHungarianString(): void
     {
         $string = $this->hungarian;
 
@@ -215,7 +215,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedHungarian, $convertedString);
-    }*/
+    }
 
     public function testForConvertingSimpleIcelandicString(): void
     {
@@ -560,7 +560,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on یک
      */
-    /*public function testForConvertingSimpleUrduString(): void
+    public function testForConvertingSimpleUrduString(): void
     {
         $string = $this->urdu;
 
@@ -568,7 +568,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedUrdu, $convertedString);
-    }*/
+    }
 
     public function testForConvertingSimpleUyghurString(): void
     {
@@ -603,7 +603,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on đớn and đánh
      */
-    /*public function testForConvertingSimpleVietnameseString(): void
+    public function testForConvertingSimpleVietnameseString(): void
     {
         $string = $this->vietnamese;
 
@@ -611,5 +611,5 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedVietnamese, $convertedString);
-    }*/
+    }
 }

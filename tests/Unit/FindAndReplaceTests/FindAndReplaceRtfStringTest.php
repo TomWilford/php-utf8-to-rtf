@@ -184,7 +184,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on ום ע הם and תא
      */
-    /*public function testForConvertingRtfHebrewString(): void
+    public function testForConvertingRtfHebrewString(): void
     {
         $string = $this->rtfStart . $this->hebrew . $this->rtfEnd;
 
@@ -192,7 +192,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->rtfStart . $this->convertedHebrew . $this->rtfEnd, $convertedString);
-    }*/
+    }
 
     public function testForConvertingRtfHindiString(): void
     {
@@ -207,7 +207,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on í
      */
-    /*public function testForConvertingRtfHungarianString(): void
+    public function testForConvertingRtfHungarianString(): void
     {
         $string = $this->rtfStart . $this->hungarian . $this->rtfEnd;
 
@@ -215,7 +215,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->rtfStart . $this->convertedHungarian . $this->rtfEnd, $convertedString);
-    }*/
+    }
 
     public function testForConvertingRtfIcelandicString(): void
     {
@@ -560,7 +560,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on یک
      */
-    /*public function testForConvertingRtfUrduString(): void
+    public function testForConvertingRtfUrduString(): void
     {
         $string = $this->rtfStart . $this->urdu . $this->rtfEnd;
 
@@ -568,7 +568,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->rtfStart . $this->convertedUrdu . $this->$this->rtfEnd, $convertedString);
-    }*/
+    }
 
     public function testForConvertingRtfUyghurString(): void
     {
@@ -603,7 +603,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on đớn and đánh
      */
-    /*public function testForConvertingRtfVietnameseString(): void
+    public function testForConvertingRtfVietnameseString(): void
     {
         $string = $this->rtfStart . $this->vietnamese . $this->rtfEnd;
 
@@ -611,5 +611,5 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->rtfStart . $this->convertedVietnamese . $this->$this->rtfEnd, $convertedString);
-    }*/
+    }
 }
