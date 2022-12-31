@@ -1,13 +1,25 @@
 <?php
 
+/*
+ * Copyright (c) 2022. Tom Wilford <hello@jollyblueman.com>
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 namespace Wilf\PhpUtf8ToRtf;
 
+/**
+ * Offers methods for locating and converting UTF8 strings to an RTF format.
+ *
+ * @author Tom Wilford <hello@jollyblueman.com>
+ */
 class CharacterConverter implements CharacterConverterInterface
 {
     public function findAndReplace(string $string): string
     {
         $wordsToConvert = $this->locateWordsInString($string);
-        $convertedWords = $this->convertWordsToRtf($wordsToConvert);
+        $convertedWords = $this->convertArrayToRtf($wordsToConvert);
 
         foreach ($convertedWords as $word => $convertedWord) {
             $string = str_replace($word, '{' . $convertedWord . '}', $string);
@@ -30,19 +42,19 @@ class CharacterConverter implements CharacterConverterInterface
         return $words;
     }
 
-    public function convertWordsToRtf(array $words): array
+    public function convertArrayToRtf(array $words): array
     {
         $convertedWords = [];
         foreach ($words as $word) {
             if (!array_key_exists($word, $convertedWords)) {
-                $convertedWords[$word] = $this->convertWordToRtf($word);
+                $convertedWords[$word] = $this->convertStringToRtf($word);
             }
         }
 
         return $convertedWords;
     }
 
-    public function convertWordToRtf(string $word): string
+    public function convertStringToRtf(string $word): string
     {
         $rtf = "";
         for ($i = 0; $i < mb_strlen($word, "UTF-8"); $i++) {

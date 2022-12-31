@@ -10,6 +10,7 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
 {
     use Rtf;
     use Pangrams;
+
     public function testForNotConvertingRtfEnglishInString(): void
     {
         $string = $this->rtfStart . $this->english . $this->rtfEnd;

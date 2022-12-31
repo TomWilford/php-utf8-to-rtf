@@ -3,7 +3,7 @@
          colors="true">
 
     <testsuites>
-        <testsuite name="Application Test Suite">
+        <testsuite name="PHP UTF8 To RTF Test Suite">
             <directory>tests/</directory>
         </testsuite>
     </testsuites>

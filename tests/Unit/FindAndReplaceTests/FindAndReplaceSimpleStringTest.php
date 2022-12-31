@@ -10,6 +10,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
 {
     use Pangrams;
     use Rtf;
+
     public function testForNotConvertingSimpleEnglishInString(): void
     {
         $string = $this->english;

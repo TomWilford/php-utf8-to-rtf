@@ -54,11 +54,11 @@ trait Pangrams
     public string $igbo = "Nne, nna, wepụ he’l’ụjọ dum n’ime ọzụzụ ụmụ, vufesi obi nye Chukwu, ṅụrịanụ, gbakọọnụ kpaa, kwee ya ka o guzoshie ike; ọ ghaghị ito, nwapụta ezi agwa.";
 
     public string $indonesian = "Saya lihat foto Hamengkubuwono XV bersama enam zebra purba cantik yang jatuh dari Alquranmu.";
-    
+
     public string $irish = "D’fhuascail Íosa Úrmhac na hÓighe Beannaithe pór Éava agus Ádhaimh";
 
     public string $italian = "Ma la volpe, col suo balzo, ha raggiunto il quieto Fido.";
-    
+
     public string $japanese = "いろはにほへと ちりぬるを わかよたれそ つねならむ うゐのおくやま けふこえて あさきゆめみし ゑひもせす（ん）";
 
     public string $javanese = "꧋ ꦲꦤꦕꦫꦏ꧈ ꦢꦠꦱꦮꦭ꧈ ꦥꦝꦗꦪꦚ꧈ ꦩꦒꦧꦛꦔ꧉";

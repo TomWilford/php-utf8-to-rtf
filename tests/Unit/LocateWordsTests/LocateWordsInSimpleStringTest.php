@@ -9,6 +9,7 @@ use Wilf\PhpUtf8ToRtf\CharacterConverter;
 final class LocateWordsInSimpleStringTest extends TestCase
 {
     use Pangrams;
+
     public function testForNotLocatingRtfSafeCharacters(): void
     {
         $string = "{ } ! ? # / \\";

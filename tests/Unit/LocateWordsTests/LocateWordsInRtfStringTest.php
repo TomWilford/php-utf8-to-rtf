@@ -10,6 +10,7 @@ final class LocateWordsInRtfStringTest extends \PHPUnit\Framework\TestCase
 {
     use Rtf;
     use Pangrams;
+
     public function testForNotLocatingEnglishInRtf(): void
     {
         $string = $this->rtfStart . $this->english . $this->rtfEnd;

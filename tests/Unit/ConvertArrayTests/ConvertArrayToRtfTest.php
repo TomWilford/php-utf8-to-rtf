@@ -8,6 +8,7 @@ use Wilf\PhpUtf8ToRtf\CharacterConverter;
 final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
 {
     use Pangrams;
+
     public function testForNotConvertingEnglishInString(): void
     {
         $words = explode(' ', $this->english);
