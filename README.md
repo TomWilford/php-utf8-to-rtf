@@ -6,7 +6,7 @@ A simple class for converting UTF8 characters to an RTF safe format in PHP.
 `composer require tomwilford/php-utf8-to-rtf`
    
 ## Usage
-> Use PHP 7.0 or higher
+> Requires PHP 7.0 or higher
 
 Instantiate the converter using:
 
