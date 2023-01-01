@@ -18,7 +18,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->findAndReplace($string);
 
-        $this->assertEquals("The quick brown fox jumps over the lazy dog!", $convertedString);
+        $this->assertEquals($this->convertedEnglish, $convertedString);
     }
 
     public function testForConvertingSimpleArabicString(): void
@@ -118,7 +118,7 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->findAndReplace($string);
 
-        $this->assertEquals($this->convertedDongka, $convertedString);
+        $this->assertEquals($this->convertedDzongkha, $convertedString);
     }
 
     public function testForConvertingSimpleEsperantoString(): void
@@ -181,9 +181,6 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($this->convertedGreek, $convertedString);
     }
 
-    /**
-    Failed on ום ע הם and תא
-     */
     public function testForConvertingSimpleHebrewString(): void
     {
         $string = $this->hebrew;
@@ -204,9 +201,6 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($this->convertedHindi, $convertedString);
     }
 
-    /**
-    Failed on í
-     */
     public function testForConvertingSimpleHungarianString(): void
     {
         $string = $this->hungarian;
@@ -557,9 +551,6 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($this->convertedUkrainian, $convertedString);
     }
 
-    /**
-    Failed on یک
-     */
     public function testForConvertingSimpleUrduString(): void
     {
         $string = $this->urdu;
@@ -600,9 +591,6 @@ final class FindAndReplaceSimpleStringTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($this->convertedWelsh, $convertedString);
     }
 
-    /**
-    Failed on đớn and đánh
-     */
     public function testForConvertingSimpleVietnameseString(): void
     {
         $string = $this->vietnamese;

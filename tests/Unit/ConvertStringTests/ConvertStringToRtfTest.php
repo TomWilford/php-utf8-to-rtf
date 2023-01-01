@@ -18,7 +18,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', "The quick brown fox jumps over the lazy dog!"), $convertedString);
+        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedEnglish), $convertedString);
     }
 
     public function testForConvertingArabicString(): void
@@ -118,7 +118,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedDongka), $convertedString);
+        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedDzongkha), $convertedString);
     }
 
     public function testForConvertingEsperantoString(): void
@@ -554,7 +554,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on یک
      */
-    /*public function testForConvertingUrduString(): void
+    public function testForConvertingUrduString(): void
     {
         $string = $this->urdu;
 
@@ -562,7 +562,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->convertStringToRtf($string);
 
         $this->assertEquals(str_replace(['{', '}'], '', $this->convertedUrdu), $convertedString);
-    }*/
+    }
 
     public function testForConvertingUyghurString(): void
     {
@@ -597,7 +597,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
     /**
     Failed on đớn and đánh
      */
-    /*public function testForConvertingVietnameseString(): void
+    public function testForConvertingVietnameseString(): void
     {
         $string = $this->vietnamese;
 
@@ -605,5 +605,5 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $convertedString = $converter->convertStringToRtf($string);
 
         $this->assertEquals(str_replace(['{', '}'], '', $this->convertedVietnamese), $convertedString);
-    }*/
+    }
 }
