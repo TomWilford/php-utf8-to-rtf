@@ -4,3 +4,4 @@ Thanks for checking out my project. I'm nowhere near a linguistics expert (or an
 
 ## Requirements
 * All changes must be compatible with PHP 7.4 and above
+* Compatible with phpcs PSR12 standard (excluding any pangrams in the test suite)

@@ -1,6 +1,6 @@
 # PHP UTF8 To RTF
 ## Description
-A simple class for converting UTF8 characters to an RTF safe format in PHP.
+A simple PHP class for converting UTF8 characters to an RTF safe version in a string.
 
 ## Installation
 `composer require tomwilford/php-utf8-to-rtf`
@@ -14,13 +14,13 @@ Instantiate the converter using:
 $converter = new CharacterConverter();
 ```
 
-To find and replace UTF8 characters in a long string use:
+To find and replace UTF8 characters with RTF safe versions in a long string use:
 
 ```php
 $convertedString = $converter->findAndReplace($string);
 ```
 
-Or, for shorter strings, simply convert the whole string:
+Or, for shorter strings and characters, simply convert the whole string:
 
 ```php
 $convertedString = $converter->convertStringToRtf($string);
@@ -32,19 +32,19 @@ You can also convert an array of UTF8 strings:
 $convertedArray = $converter->convertArrayToRtf($arrayOfStrings);
 ```
 
-Finally, if you need to do any additional processing on the UTF8 strings before converting, 
-you can create an array of UTF8 strings using:
+Finally, if you need to do any additional processing on the UTF8 characters before converting, 
+you can extract them as an array using:
 ```php
-$arrayToConvert = $converter->locateWordsInString($string);
+$arrayToConvert = $converter->locateCharactersInString($string);
 ```
 
 ## Testing
-Testing has been done with PHPUnit and a series of pangrams sourced online to try to best capture
+PHPUnit tests have been written using series of pangrams sourced online to try to best capture
 as many characters as possible in different languages being used in a natural way. Please see the 
 [Pangrams trait](tests/Resources/Pangrams.php) for the pangram sources' credits.
 
-Currently, there are four failing tests for `findAndReplace()` whereby some characters are ignored by the 
-regex and not replaced during the conversion.
+There also is a short script that can [generate a test RTF file](tests/GenerateTestFile/generateTestFile.php) that
+can be opened in a word processor to verify the results.
 
 ## Contributing
 Contributions are welcome, please see [CONTRIBUTING](CONTRIBUTING.md) for more information.

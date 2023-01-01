@@ -18,9 +18,9 @@ interface CharacterConverterInterface
 {
     public function findAndReplace(string $string): string;
 
-    public function locateWordsInString(string $string): array;
+    public function locateCharactersInString(string $string): array;
 
-    public function convertArrayToRtf(array $words): array;
+    public function convertArrayToRtf(array $strings): array;
 
-    public function convertStringToRtf(string $word): string;
+    public function convertStringToRtf(string $string): string;
 }
