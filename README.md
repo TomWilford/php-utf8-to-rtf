@@ -1,6 +1,6 @@
 # PHP UTF8 To RTF
 ## Description
-A simple class for converting UTF8 characters to an RTF safe format in PHP.
+A simple PHP class for converting UTF8 characters to an RTF safe version in a string.
 
 ## Installation
 `composer require tomwilford/php-utf8-to-rtf`
@@ -14,13 +14,13 @@ Instantiate the converter using:
 $converter = new CharacterConverter();
 ```
 
-To find and replace UTF8 characters in a long string use:
+To find and replace UTF8 characters with RTF safe versions in a long string use:
 
 ```php
 $convertedString = $converter->findAndReplace($string);
 ```
 
-Or, for shorter strings, simply convert the whole string:
+Or, for shorter strings and characters, simply convert the whole string:
 
 ```php
 $convertedString = $converter->convertStringToRtf($string);
