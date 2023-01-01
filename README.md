@@ -32,19 +32,16 @@ You can also convert an array of UTF8 strings:
 $convertedArray = $converter->convertArrayToRtf($arrayOfStrings);
 ```
 
-Finally, if you need to do any additional processing on the UTF8 strings before converting, 
-you can create an array of UTF8 strings using:
+Finally, if you need to do any additional processing on the UTF8 characters before converting, 
+you can extract them as an array using:
 ```php
-$arrayToConvert = $converter->locateWordsInString($string);
+$arrayToConvert = $converter->locateCharactersInString($string);
 ```
 
 ## Testing
 Testing has been done with PHPUnit and a series of pangrams sourced online to try to best capture
 as many characters as possible in different languages being used in a natural way. Please see the 
 [Pangrams trait](tests/Resources/Pangrams.php) for the pangram sources' credits.
-
-Currently, there are four failing tests for `findAndReplace()` whereby some characters are ignored by the 
-regex and not replaced during the conversion.
 
 ## Contributing
 Contributions are welcome, please see [CONTRIBUTING](CONTRIBUTING.md) for more information.
