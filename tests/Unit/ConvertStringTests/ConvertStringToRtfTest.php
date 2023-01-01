@@ -18,7 +18,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedEnglish), $convertedString);
+        $this->assertEquals($this->convertedEnglish, $convertedString);
     }
 
     public function testForConvertingArabicString(): void
@@ -28,7 +28,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedArabic), $convertedString);
+        $this->assertEquals($this->convertedArabic, $convertedString);
     }
 
     public function testForConvertingAzeriString(): void
@@ -38,7 +38,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedAzeri), $convertedString);
+        $this->assertEquals($this->convertedAzeri, $convertedString);
     }
 
     public function testForConvertingBretonString(): void
@@ -48,7 +48,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedBreton), $convertedString);
+        $this->assertEquals($this->convertedBreton, $convertedString);
     }
 
     public function testForConvertingBulgarianString(): void
@@ -58,7 +58,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedBulgarian), $convertedString);
+        $this->assertEquals($this->convertedBulgarian, $convertedString);
     }
 
     public function testForConvertingCatalanString(): void
@@ -68,7 +68,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedCatalan), $convertedString);
+        $this->assertEquals($this->convertedCatalan, $convertedString);
     }
 
     public function testForConvertingChineseTraditionalString(): void
@@ -78,7 +78,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedChineseTraditional), $convertedString);
+        $this->assertEquals($this->convertedChineseTraditional, $convertedString);
     }
 
     public function testForConvertingChineseSimplifiedString(): void
@@ -88,7 +88,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedChineseSimplified), $convertedString);
+        $this->assertEquals($this->convertedChineseSimplified, $convertedString);
     }
 
     public function testForConvertingCzechString(): void
@@ -98,7 +98,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedCzech), $convertedString);
+        $this->assertEquals($this->convertedCzech, $convertedString);
     }
 
     public function testForConvertingDanishString(): void
@@ -108,7 +108,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedDanish), $convertedString);
+        $this->assertEquals($this->convertedDanish, $convertedString);
     }
 
     public function testForConvertingDzongkhaString(): void
@@ -118,7 +118,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedDzongkha), $convertedString);
+        $this->assertEquals($this->convertedDzongkha, $convertedString);
     }
 
     public function testForConvertingEsperantoString(): void
@@ -128,7 +128,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedEsperanto), $convertedString);
+        $this->assertEquals($this->convertedEsperanto, $convertedString);
     }
 
     public function testForConvertingEstonianString(): void
@@ -138,7 +138,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedEstonian), $convertedString);
+        $this->assertEquals($this->convertedEstonian, $convertedString);
     }
 
     public function testForConvertingFinnishString(): void
@@ -148,7 +148,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedFinnish), $convertedString);
+        $this->assertEquals($this->convertedFinnish, $convertedString);
     }
 
     public function testForConvertingFrenchString(): void
@@ -158,7 +158,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedFrench), $convertedString);
+        $this->assertEquals($this->convertedFrench, $convertedString);
     }
 
     public function testForConvertingGermanString(): void
@@ -168,7 +168,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedGerman), $convertedString);
+        $this->assertEquals($this->convertedGerman, $convertedString);
     }
 
     public function testForConvertingGreekString(): void
@@ -178,7 +178,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedGreek), $convertedString);
+        $this->assertEquals($this->convertedGreek, $convertedString);
     }
 
     public function testForConvertingHebrewString(): void
@@ -188,7 +188,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedHebrew), $convertedString);
+        $this->assertEquals($this->convertedHebrew, $convertedString);
     }
 
     public function testForConvertingHindiString(): void
@@ -198,7 +198,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedHindi), $convertedString);
+        $this->assertEquals($this->convertedHindi, $convertedString);
     }
 
     public function testForConvertingHungarianString(): void
@@ -208,7 +208,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedHungarian), $convertedString);
+        $this->assertEquals($this->convertedHungarian, $convertedString);
     }
 
     public function testForConvertingIcelandicString(): void
@@ -218,7 +218,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedIcelandic), $convertedString);
+        $this->assertEquals($this->convertedIcelandic, $convertedString);
     }
 
     public function testForConvertingIgboString(): void
@@ -228,7 +228,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedIgbo), $convertedString);
+        $this->assertEquals($this->convertedIgbo, $convertedString);
     }
 
     public function testForConvertingIndonesianString(): void
@@ -238,7 +238,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedIndonesian), $convertedString);
+        $this->assertEquals($this->convertedIndonesian, $convertedString);
     }
 
     public function testForConvertingIrishString(): void
@@ -248,7 +248,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedIrish), $convertedString);
+        $this->assertEquals($this->convertedIrish, $convertedString);
     }
 
     public function testForConvertingItalianString(): void
@@ -258,7 +258,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedItalian), $convertedString);
+        $this->assertEquals($this->convertedItalian, $convertedString);
     }
 
     public function testForConvertingJapaneseString(): void
@@ -268,7 +268,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedJapanese), $convertedString);
+        $this->assertEquals($this->convertedJapanese, $convertedString);
     }
 
     public function testForConvertingJavaneseString(): void
@@ -278,7 +278,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedJavanese), $convertedString);
+        $this->assertEquals($this->convertedJavanese, $convertedString);
     }
 
     public function testForConvertingKoreanString(): void
@@ -288,7 +288,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedKorean), $convertedString);
+        $this->assertEquals($this->convertedKorean, $convertedString);
     }
 
     public function testForConvertingLatinString(): void
@@ -298,7 +298,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedlatin), $convertedString);
+        $this->assertEquals($this->convertedlatin, $convertedString);
     }
 
     public function testForConvertingLatvianString(): void
@@ -308,7 +308,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedLatvian), $convertedString);
+        $this->assertEquals($this->convertedLatvian, $convertedString);
     }
 
     public function testForConvertingLithuanianString(): void
@@ -318,7 +318,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedLithuanian), $convertedString);
+        $this->assertEquals($this->convertedLithuanian, $convertedString);
     }
 
     public function testForConvertingLojbanString(): void
@@ -328,7 +328,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedLojban), $convertedString);
+        $this->assertEquals($this->convertedLojban, $convertedString);
     }
 
     public function testForConvertingMacedonianString(): void
@@ -338,7 +338,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedMacedonian), $convertedString);
+        $this->assertEquals($this->convertedMacedonian, $convertedString);
     }
 
     public function testForConvertingMalayalamString(): void
@@ -348,7 +348,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedMalayalam), $convertedString);
+        $this->assertEquals($this->convertedMalayalam, $convertedString);
     }
 
     public function testForConvertingMapudungunString(): void
@@ -358,7 +358,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedMapudungun), $convertedString);
+        $this->assertEquals($this->convertedMapudungun, $convertedString);
     }
 
     public function testForConvertingMongolianString(): void
@@ -368,7 +368,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedMongolian), $convertedString);
+        $this->assertEquals($this->convertedMongolian, $convertedString);
     }
 
     public function testForConvertingMyanmarString(): void
@@ -378,7 +378,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedMyanmar), $convertedString);
+        $this->assertEquals($this->convertedMyanmar, $convertedString);
     }
 
     public function testForConvertingNorwegianString(): void
@@ -388,7 +388,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedNorwegian), $convertedString);
+        $this->assertEquals($this->convertedNorwegian, $convertedString);
     }
 
     public function testForConvertingPolishString(): void
@@ -398,7 +398,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedPolish), $convertedString);
+        $this->assertEquals($this->convertedPolish, $convertedString);
     }
 
     public function testForConvertingPortugueseString(): void
@@ -408,7 +408,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedPortuguese), $convertedString);
+        $this->assertEquals($this->convertedPortuguese, $convertedString);
     }
 
     public function testForConvertingRomanianString(): void
@@ -418,7 +418,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedRomanian), $convertedString);
+        $this->assertEquals($this->convertedRomanian, $convertedString);
     }
 
     public function testForConvertingRussianString(): void
@@ -428,7 +428,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedRussian), $convertedString);
+        $this->assertEquals($this->convertedRussian, $convertedString);
     }
 
     public function testForConvertingSanscritString(): void
@@ -438,7 +438,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedSanscrit), $convertedString);
+        $this->assertEquals($this->convertedSanscrit, $convertedString);
     }
 
     public function testForConvertingScottishGaelicString(): void
@@ -448,7 +448,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedScottishGaelic), $convertedString);
+        $this->assertEquals($this->convertedScottishGaelic, $convertedString);
     }
 
     public function testForConvertingSerbianString(): void
@@ -458,7 +458,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedSerbian), $convertedString);
+        $this->assertEquals($this->convertedSerbian, $convertedString);
     }
 
     public function testForConvertingSlovakString(): void
@@ -468,7 +468,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedSlovak), $convertedString);
+        $this->assertEquals($this->convertedSlovak, $convertedString);
     }
 
     public function testForConvertingSlovenianString(): void
@@ -478,7 +478,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedSlovenian), $convertedString);
+        $this->assertEquals($this->convertedSlovenian, $convertedString);
     }
 
     public function testForConvertingSpanishString(): void
@@ -488,7 +488,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedSpanish), $convertedString);
+        $this->assertEquals($this->convertedSpanish, $convertedString);
     }
 
     public function testForConvertingSwedishString(): void
@@ -498,7 +498,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedSwedish), $convertedString);
+        $this->assertEquals($this->convertedSwedish, $convertedString);
     }
 
     public function testForConvertingTagalogString(): void
@@ -508,7 +508,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedTagalog), $convertedString);
+        $this->assertEquals($this->convertedTagalog, $convertedString);
     }
 
     public function testForConvertingThaiString(): void
@@ -518,7 +518,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedThai), $convertedString);
+        $this->assertEquals($this->convertedThai, $convertedString);
     }
 
     public function testForConvertingTibetanString(): void
@@ -528,7 +528,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedTibetan), $convertedString);
+        $this->assertEquals($this->convertedTibetan, $convertedString);
     }
 
     public function testForConvertingTurkishString(): void
@@ -538,7 +538,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedTurkish), $convertedString);
+        $this->assertEquals($this->convertedTurkish, $convertedString);
     }
 
     public function testForConvertingUkrainianString(): void
@@ -548,7 +548,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedUkrainian), $convertedString);
+        $this->assertEquals($this->convertedUkrainian, $convertedString);
     }
 
     /**
@@ -561,7 +561,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedUrdu), $convertedString);
+        $this->assertEquals($this->convertedUrdu, $convertedString);
     }
 
     public function testForConvertingUyghurString(): void
@@ -571,7 +571,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedUyghur), $convertedString);
+        $this->assertEquals($this->convertedUyghur, $convertedString);
     }
 
     public function testForConvertingYorubaString(): void
@@ -581,7 +581,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedYoruba), $convertedString);
+        $this->assertEquals($this->convertedYoruba, $convertedString);
     }
 
     public function testForConvertingWelshString(): void
@@ -591,7 +591,7 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedWelsh), $convertedString);
+        $this->assertEquals($this->convertedWelsh, $convertedString);
     }
 
     /**
@@ -604,6 +604,6 @@ final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->convertStringToRtf($string);
 
-        $this->assertEquals(str_replace(['{', '}'], '', $this->convertedVietnamese), $convertedString);
+        $this->assertEquals($this->convertedVietnamese, $convertedString);
     }
 }

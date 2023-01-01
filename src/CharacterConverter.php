@@ -22,7 +22,7 @@ class CharacterConverter implements CharacterConverterInterface
         $convertedStrings = $this->convertArrayToRtf($stringsToConvert);
 
         foreach ($convertedStrings as $originalString => $convertedString) {
-            $string = str_replace($originalString, '{' . $convertedString . '}', $string);
+            $string = str_replace($originalString, $convertedString, $string);
         }
 
         return $string;
@@ -64,7 +64,7 @@ class CharacterConverter implements CharacterConverterInterface
             if ($convertedCharacter < 0x7f) {
                 $convertedString .= $character;
             } else {
-                $convertedString .= sprintf("\\u%d?", $convertedCharacter);
+                $convertedString .= '{' . sprintf("\\u%d?", $convertedCharacter) . '}';
             }
         }
 
