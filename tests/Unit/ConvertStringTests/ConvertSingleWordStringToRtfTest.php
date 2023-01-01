@@ -5,7 +5,7 @@ namespace Unit\ConvertStringTests;
 use Resources\Pangrams;
 use Wilf\PhpUtf8ToRtf\CharacterConverter;
 
-final class ConvertWordStringToRtfTest extends \PHPUnit\Framework\TestCase
+final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
 {
     use Pangrams;
 
