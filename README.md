@@ -39,9 +39,12 @@ $arrayToConvert = $converter->locateCharactersInString($string);
 ```
 
 ## Testing
-Testing has been done with PHPUnit and a series of pangrams sourced online to try to best capture
+PHPUnit tests have been written using series of pangrams sourced online to try to best capture
 as many characters as possible in different languages being used in a natural way. Please see the 
 [Pangrams trait](tests/Resources/Pangrams.php) for the pangram sources' credits.
+
+There also is a short script that can [generate a test RTF file](tests/GenerateTestFile/generateTestFile.php) that
+can be opened in a word processor to verify the results.
 
 ## Contributing
 Contributions are welcome, please see [CONTRIBUTING](CONTRIBUTING.md) for more information.
