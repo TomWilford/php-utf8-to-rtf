@@ -34,7 +34,7 @@ class CharacterConverter implements CharacterConverterInterface
 
         $characters = [];
         foreach ($matches[0] as $match) {
-            if (!in_array($match, $characters)) {
+            if (trim($match) && !in_array($match, $characters)) {
                 $characters[] = $match;
             }
         }
@@ -46,7 +46,7 @@ class CharacterConverter implements CharacterConverterInterface
     {
         $convertedStrings = [];
         foreach ($strings as $string) {
-            if (!array_key_exists($string, $convertedStrings)) {
+            if (trim($string) && !array_key_exists($string, $convertedStrings)) {
                 $convertedStrings[$string] = $this->convertStringToRtf($string);
             }
         }
