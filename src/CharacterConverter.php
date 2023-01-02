@@ -30,7 +30,7 @@ class CharacterConverter implements CharacterConverterInterface
 
     public function locateCharactersInString(string $string): array
     {
-        preg_match_all("/[^\x00-\x7F]/u", $string, $matches);
+        preg_match_all("/[^ -~]/u", $string, $matches);
 
         $characters = [];
         foreach ($matches[0] as $match) {
