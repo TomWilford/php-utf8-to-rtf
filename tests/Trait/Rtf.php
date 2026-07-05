@@ -1,7 +1,10 @@
 <?php
 
-namespace Resources;
+declare(strict_types=1);
 
+namespace Wilf\PhpUtf8ToRtf\Tests\TestTrait;
+
+// phpcs:disable Generic.Files.LineLength.TooLong
 trait Rtf
 {
     public string $rtfStart = '{\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff31507\deff0\stshfdbch31506\stshfloch31506\stshfhich31506\stshfbi31507\deflang2057\deflangfe2057\themelang2057\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria Math;}
@@ -36,23 +39,23 @@ trait Rtf
 {\fbiminor\f31581\fbidi \froman\fcharset161\fprq2 Times New Roman Greek;}{\fbiminor\f31582\fbidi \froman\fcharset162\fprq2 Times New Roman Tur;}{\fbiminor\f31583\fbidi \froman\fcharset177\fprq2 Times New Roman (Hebrew);}
 {\fbiminor\f31584\fbidi \froman\fcharset178\fprq2 Times New Roman (Arabic);}{\fbiminor\f31585\fbidi \froman\fcharset186\fprq2 Times New Roman Baltic;}{\fbiminor\f31586\fbidi \froman\fcharset163\fprq2 Times New Roman (Vietnamese);}}
 {\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;
-\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green0\blue0;\red0\green0\blue0;}{\*\defchp \f31506\fs22\lang2057\langfe1033\langfenp1033 }{\*\defpap 
-\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 }\noqfpromote {\stylesheet{\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 
+\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green0\blue0;\red0\green0\blue0;}{\*\defchp \f31506\fs22\lang2057\langfe1033\langfenp1033 }{\*\defpap
+\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 }\noqfpromote {\stylesheet{\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1
 \af31507\afs22\alang1025 \ltrch\fcs0 \f31506\fs22\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \snext0 \sqformat \spriority0 Normal;}{\*\cs10 \additive \ssemihidden \sunhideused \spriority1 Default Paragraph Font;}{\*
 \ts11\tsrowd\trftsWidthB3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3\trcbpat1\trcfpat1\tblind0\tblindtype3\tsvertalt\tsbrdrt\tsbrdrl\tsbrdrb\tsbrdrr\tsbrdrdgl\tsbrdrdgr\tsbrdrh\tsbrdrv \ql \li0\ri0\sa160\sl259\slmult1
 \widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0 \f31506\fs22\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \snext11 \ssemihidden \sunhideused Normal Table;}}{\*\pgptbl {\pgp
 \ipgp0\itap0\li0\ri0\sb0\sa0}}{\*\rsidtbl \rsid1052396\rsid3220871\rsid12286983\rsid13596869}{\mmathPr\mmathFont34\mbrkBin0\mbrkBinSub0\msmallFrac0\mdispDef1\mlMargin0\mrMargin0\mdefJc1\mwrapIndent1440\mintLim0\mnaryLim1}{\info{\author Tom Wilford}
 {\operator Tom Wilford}{\creatim\yr2022\mo12\dy16\hr15\min31}{\revtim\yr2022\mo12\dy16\hr15\min32}{\version1}{\edmins1}{\nofpages1}{\nofwords12}{\nofchars75}{\nofcharsws86}{\vern61}}{\*\xmlnstbl {\xmlns1 http://schemas.microsoft.com/office/word/2003/wordm
-l}}\paperw11906\paperh16838\margl1440\margr1440\margt1440\margb1440\gutter0\ltrsect 
+l}}\paperw11906\paperh16838\margl1440\margr1440\margt1440\margb1440\gutter0\ltrsect
 \widowctrl\ftnbj\aenddoc\trackmoves0\trackformatting1\donotembedsysfont1\relyonvml0\donotembedlingdata0\grfdocevents0\validatexml1\showplaceholdtext0\ignoremixedcontent0\saveinvalidxml0\showxmlerrors1\noxlattoyen
 \expshrtn\noultrlspc\dntblnsbdb\nospaceforul\formshade\horzdoc\dgmargin\dghspace180\dgvspace180\dghorigin1440\dgvorigin1440\dghshow1\dgvshow1
 \jexpand\viewkind1\viewscale90\pgbrdrhead\pgbrdrfoot\splytwnine\ftnlytwnine\htmautsp\nolnhtadjtbl\useltbaln\alntblind\lytcalctblwd\lyttblrtgr\lnbrkrule\nobrkwrptbl\snaptogridincell\allowfieldendsel\wrppunct
 \asianbrkrule\rsidroot12286983\newtblstyruls\nogrowautofit\usenormstyforlist\noindnmbrts\felnbrelev\nocxsptable\indrlsweleven\noafcnsttbl\afelev\utinl\hwelev\spltpgpar\notcvasp\notbrkcnstfrctbl\notvatxbx\krnprsnet\cachedcolbal \nouicompat \fet0
 {\*\wgrffmtfilter 2450}\nofeaturethrottle1\ilfomacatclnup0\ltrpar \sectd \ltrsect\linex0\headery708\footery708\colsx708\endnhere\sectlinegrid360\sectdefaultcl\sftnbj {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl2
 \pnucltr\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang {\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl6
-\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang 
-{\pntxtb (}{\pntxta )}}\pard\plain \ltrpar\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0 
-\f31506\fs22\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid12286983\charrsid12286983 test }{\rtlch\fcs1 \af31507 \ltrch\fcs0 \f31574\insrsid12286983\charrsid12286983 \'e4\'d5}{\rtlch\fcs1 \af31507 \ltrch\fcs0 
+\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang
+{\pntxtb (}{\pntxta )}}\pard\plain \ltrpar\ql \li0\ri0\sa160\sl259\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0
+\f31506\fs22\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid12286983\charrsid12286983 test }{\rtlch\fcs1 \af31507 \ltrch\fcs0 \f31574\insrsid12286983\charrsid12286983 \'e4\'d5}{\rtlch\fcs1 \af31507 \ltrch\fcs0
 \insrsid12286983\charrsid12286983  }';
     public string $rtfEnd = '{\*\themedata 504b030414000600080000002100e9de0fbfff0000001c020000130000005b436f6e74656e745f54797065735d2e786d6cac91cb4ec3301045f748fc83e52d4a
 9cb2400825e982c78ec7a27cc0c8992416c9d8b2a755fbf74cd25442a820166c2cd933f79e3be372bd1f07b5c3989ca74aaff2422b24eb1b475da5df374fd9ad
@@ -214,7 +217,7 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff000000000000000000000000000000000000000000000000
 0000000000000000000000000000000000000000000000000105000000000000}}';
 
-    public string $convertedEnglish = "The quick brown fox jumps over the lazy dog!";
+    public string $convertedEnglish = 'The quick brown fox jumps over the lazy dog!';
 
     public string $convertedArabic = "{\u1606?}{\u1589?} {\u1581?}{\u1603?}{\u1610?}{\u1605?} {\u1604?}{\u1607?} {\u1587?}{\u1585?} {\u1602?}{\u1575?}{\u1591?}{\u1593?} {\u1608?}{\u1584?}{\u1608?} {\u1588?}{\u1571?}{\u1606?} {\u1593?}{\u1592?}{\u1610?}{\u1605?} {\u1605?}{\u1603?}{\u1578?}{\u1608?}{\u1576?} {\u1593?}{\u1604?}{\u1609?} {\u1579?}{\u1608?}{\u1576?} {\u1571?}{\u1582?}{\u1590?}{\u1585?} {\u1608?}{\u1605?}{\u1594?}{\u1604?}{\u1601?} {\u1576?}{\u1580?}{\u1604?}{\u1583?} {\u1571?}{\u1586?}{\u1585?}{\u1602?}";
 
@@ -258,11 +261,11 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
 
     public string $convertedIgbo = "Nne, nna, wep{\u7909?} he{\u8217?}l{\u8217?}{\u7909?}j{\u7885?} dum n{\u8217?}ime {\u7885?}z{\u7909?}z{\u7909?} {\u7909?}m{\u7909?}, vufesi obi nye Chukwu, {\u7749?}{\u7909?}r{\u7883?}an{\u7909?}, gbak{\u7885?}{\u7885?}n{\u7909?} kpaa, kwee ya ka o guzoshie ike; {\u7885?} ghagh{\u7883?} ito, nwap{\u7909?}ta ezi agwa.";
 
-    public string $convertedIndonesian = "Saya lihat foto Hamengkubuwono XV bersama enam zebra purba cantik yang jatuh dari Alquranmu.";
+    public string $convertedIndonesian = 'Saya lihat foto Hamengkubuwono XV bersama enam zebra purba cantik yang jatuh dari Alquranmu.';
 
     public string $convertedIrish = "D{\u8217?}fhuascail {\u205?}osa {\u218?}rmhac na h{\u211?}ighe Beannaithe p{\u243?}r {\u201?}ava agus {\u193?}dhaimh";
 
-    public string $convertedItalian = "Ma la volpe, col suo balzo, ha raggiunto il quieto Fido.";
+    public string $convertedItalian = 'Ma la volpe, col suo balzo, ha raggiunto il quieto Fido.';
 
     public string $convertedJapanese = "{\u12356?}{\u12429?}{\u12399?}{\u12395?}{\u12411?}{\u12408?}{\u12392?} {\u12385?}{\u12426?}{\u12396?}{\u12427?}{\u12434?} {\u12431?}{\u12363?}{\u12424?}{\u12383?}{\u12428?}{\u12381?} {\u12388?}{\u12397?}{\u12394?}{\u12425?}{\u12416?} {\u12358?}{\u12432?}{\u12398?}{\u12362?}{\u12367?}{\u12420?}{\u12414?} {\u12369?}{\u12405?}{\u12371?}{\u12360?}{\u12390?} {\u12354?}{\u12373?}{\u12365?}{\u12422?}{\u12417?}{\u12415?}{\u12375?} {\u12433?}{\u12402?}{\u12418?}{\u12379?}{\u12377?}{\u65288?}{\u12435?}{\u65289?}";
 
@@ -270,7 +273,7 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
 
     public string $convertedKorean = "{\u53412?}{\u49828?}{\u51032?} {\u44256?}{\u50976?}{\u51312?}{\u44148?}{\u51008?} {\u51077?}{\u49696?}{\u45180?}{\u47532?} {\u47564?}{\u45208?}{\u50556?} {\u54616?}{\u44256?} {\u53945?}{\u48324?}{\u54620?} {\u44592?}{\u49696?}{\u51008?} {\u54596?}{\u50836?}{\u52824?} {\u50506?}{\u45796?}.";
 
-    public string $convertedlatin = "Sic fugiens, dux, zelotypos, quam Karus haberis.";
+    public string $convertedlatin = 'Sic fugiens, dux, zelotypos, quam Karus haberis.';
 
     public string $convertedLatvian = "Mu{\u316?}{\u311?}a hipiji m{\u275?}{\u291?}ina br{\u299?}vi nogar{\u353?}ot celof{\u257?}na {\u382?}{\u326?}audz{\u275?}j{\u269?}{\u363?}sku.";
 
@@ -332,3 +335,4 @@ ffffffffffffffffffffffffffffffff52006f006f007400200045006e0074007200790000000000
 
     public string $convertedVietnamese = "Tr{\u259?}m n{\u259?}m trong c{\u245?}i ng{\u432?}{\u7901?}i ta, ch{\u7919?} t{\u224?}i ch{\u7919?} ph{\u7853?}n kh{\u233?}o l{\u224?} gh{\u233?}t nhau. Tr{\u7843?}i qua m{\u7897?}t cu{\u7897?}c b{\u7875?} d{\u226?}u, nh{\u7919?}ng {\u273?}i{\u7873?}u tr{\u244?}ng th{\u7845?}y m{\u224?} {\u273?}au {\u273?}{\u7899?}n l{\u242?}ng. L{\u7841?} g{\u236?} b{\u7881?} s{\u7855?}c t{\u432?} phong, tr{\u7901?}i xanh quen v{\u7899?}i m{\u225?} h{\u7891?}ng {\u273?}{\u225?}nh ghen.";
 }
+// phpcs:enable

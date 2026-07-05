@@ -1,608 +1,607 @@
 <?php
 
-namespace Unit\ConvertStringTests;
+declare(strict_types=1);
 
-use Resources\Pangrams;
-use Resources\Rtf;
+namespace Wilf\PhpUtf8ToRtf\Tests\FindAndReplaceTests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Wilf\PhpUtf8ToRtf\CharacterConverter;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Pangrams;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Rtf;
 
-final class ConvertStringToRtfTest extends \PHPUnit\Framework\TestCase
+#[CoversClass(CharacterConverter::class)]
+final class FindAndReplaceSimpleStringTest extends TestCase
 {
     use Pangrams;
     use Rtf;
 
-    public function testForNotConvertingEnglishInString(): void
+    public function testForNotConvertingSimpleEnglishInString(): void
     {
         $string = $this->english;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedEnglish, $convertedString);
     }
 
-    public function testForConvertingArabicString(): void
+    public function testForConvertingSimpleArabicString(): void
     {
         $string = $this->arabic;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedArabic, $convertedString);
     }
 
-    public function testForConvertingAzeriString(): void
+    public function testForConvertingSimpleAzeriString(): void
     {
         $string = $this->azeri;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedAzeri, $convertedString);
     }
 
-    public function testForConvertingBretonString(): void
+    public function testForConvertingSimpleBretonString(): void
     {
         $string = $this->breton;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedBreton, $convertedString);
     }
 
-    public function testForConvertingBulgarianString(): void
+    public function testForConvertingSimpleBulgarianString(): void
     {
         $string = $this->bulgarian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedBulgarian, $convertedString);
     }
 
-    public function testForConvertingCatalanString(): void
+    public function testForConvertingSimpleCatalanString(): void
     {
         $string = $this->catalan;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedCatalan, $convertedString);
     }
 
-    public function testForConvertingChineseTraditionalString(): void
+    public function testForConvertingSimpleChineseTraditionalString(): void
     {
         $string = $this->chineseTraditional;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedChineseTraditional, $convertedString);
     }
 
-    public function testForConvertingChineseSimplifiedString(): void
+    public function testForConvertingSimpleChineseSimplifiedString(): void
     {
         $string = $this->chineseSimplified;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedChineseSimplified, $convertedString);
     }
 
-    public function testForConvertingCzechString(): void
+    public function testForConvertingSimpleCzechString(): void
     {
         $string = $this->czech;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedCzech, $convertedString);
     }
 
-    public function testForConvertingDanishString(): void
+    public function testForConvertingSimpleDanishString(): void
     {
         $string = $this->danish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedDanish, $convertedString);
     }
 
-    public function testForConvertingDzongkhaString(): void
+    public function testForConvertingSimpleDzongkhaString(): void
     {
         $string = $this->dzongka;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedDzongkha, $convertedString);
     }
 
-    public function testForConvertingEsperantoString(): void
+    public function testForConvertingSimpleEsperantoString(): void
     {
         $string = $this->esperanto;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedEsperanto, $convertedString);
     }
 
-    public function testForConvertingEstonianString(): void
+    public function testForConvertingSimpleEstonianString(): void
     {
         $string = $this->estonian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedEstonian, $convertedString);
     }
 
-    public function testForConvertingFinnishString(): void
+    public function testForConvertingSimpleFinnishString(): void
     {
         $string = $this->finnish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedFinnish, $convertedString);
     }
 
-    public function testForConvertingFrenchString(): void
+    public function testForConvertingSimpleFrenchString(): void
     {
         $string = $this->french;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedFrench, $convertedString);
     }
 
-    public function testForConvertingGermanString(): void
+    public function testForConvertingSimpleGermanString(): void
     {
         $string = $this->german;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedGerman, $convertedString);
     }
 
-    public function testForConvertingGreekString(): void
+    public function testForConvertingSimpleGreekString(): void
     {
         $string = $this->greek;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedGreek, $convertedString);
     }
 
-    public function testForConvertingHebrewString(): void
+    public function testForConvertingSimpleHebrewString(): void
     {
         $string = $this->hebrew;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedHebrew, $convertedString);
     }
 
-    public function testForConvertingHindiString(): void
+    public function testForConvertingSimpleHindiString(): void
     {
         $string = $this->hindi;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedHindi, $convertedString);
     }
 
-    public function testForConvertingHungarianString(): void
+    public function testForConvertingSimpleHungarianString(): void
     {
         $string = $this->hungarian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedHungarian, $convertedString);
     }
 
-    public function testForConvertingIcelandicString(): void
+    public function testForConvertingSimpleIcelandicString(): void
     {
         $string = $this->icelandic;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedIcelandic, $convertedString);
     }
 
-    public function testForConvertingIgboString(): void
+    public function testForConvertingSimpleIgboString(): void
     {
         $string = $this->igbo;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedIgbo, $convertedString);
     }
 
-    public function testForConvertingIndonesianString(): void
+    public function testForConvertingSimpleIndonesianString(): void
     {
         $string = $this->indonesian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedIndonesian, $convertedString);
     }
 
-    public function testForConvertingIrishString(): void
+    public function testForConvertingSimpleIrishString(): void
     {
         $string = $this->irish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedIrish, $convertedString);
     }
 
-    public function testForConvertingItalianString(): void
+    public function testForConvertingSimpleItalianString(): void
     {
         $string = $this->italian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedItalian, $convertedString);
     }
 
-    public function testForConvertingJapaneseString(): void
+    public function testForConvertingSimpleJapaneseString(): void
     {
         $string = $this->japanese;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedJapanese, $convertedString);
     }
 
-    public function testForConvertingJavaneseString(): void
+    public function testForConvertingSimpleJavaneseString(): void
     {
         $string = $this->javanese;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedJavanese, $convertedString);
     }
 
-    public function testForConvertingKoreanString(): void
+    public function testForConvertingSimpleKoreanString(): void
     {
         $string = $this->korean;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedKorean, $convertedString);
     }
 
-    public function testForConvertingLatinString(): void
+    public function testForConvertingSimpleLatinString(): void
     {
         $string = $this->latin;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedlatin, $convertedString);
     }
 
-    public function testForConvertingLatvianString(): void
+    public function testForConvertingSimpleLatvianString(): void
     {
         $string = $this->latvian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedLatvian, $convertedString);
     }
 
-    public function testForConvertingLithuanianString(): void
+    public function testForConvertingSimpleLithuanianString(): void
     {
         $string = $this->lithuanian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedLithuanian, $convertedString);
     }
 
-    public function testForConvertingLojbanString(): void
+    public function testForConvertingSimpleLojbanString(): void
     {
         $string = $this->lojban;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedLojban, $convertedString);
     }
 
-    public function testForConvertingMacedonianString(): void
+    public function testForConvertingSimpleMacedonianString(): void
     {
         $string = $this->macedonian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedMacedonian, $convertedString);
     }
 
-    public function testForConvertingMalayalamString(): void
+    public function testForConvertingSimpleMalayalamString(): void
     {
         $string = $this->malayalam;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedMalayalam, $convertedString);
     }
 
-    public function testForConvertingMapudungunString(): void
+    public function testForConvertingSimpleMapudungunString(): void
     {
         $string = $this->mapudungun;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedMapudungun, $convertedString);
     }
 
-    public function testForConvertingMongolianString(): void
+    public function testForConvertingSimpleMongolianString(): void
     {
         $string = $this->mongolian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedMongolian, $convertedString);
     }
 
-    public function testForConvertingMyanmarString(): void
+    public function testForConvertingSimpleMyanmarString(): void
     {
         $string = $this->myanmar;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedMyanmar, $convertedString);
     }
 
-    public function testForConvertingNorwegianString(): void
+    public function testForConvertingSimpleNorwegianString(): void
     {
         $string = $this->norwegian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedNorwegian, $convertedString);
     }
 
-    public function testForConvertingPolishString(): void
+    public function testForConvertingSimplePolishString(): void
     {
         $string = $this->polish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedPolish, $convertedString);
     }
 
-    public function testForConvertingPortugueseString(): void
+    public function testForConvertingSimplePortugueseString(): void
     {
         $string = $this->portuguese;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedPortuguese, $convertedString);
     }
 
-    public function testForConvertingRomanianString(): void
+    public function testForConvertingSimpleRomanianString(): void
     {
         $string = $this->romanian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedRomanian, $convertedString);
     }
 
-    public function testForConvertingRussianString(): void
+    public function testForConvertingSimpleRussianString(): void
     {
         $string = $this->russian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedRussian, $convertedString);
     }
 
-    public function testForConvertingSanscritString(): void
+    public function testForConvertingSimpleSanscritString(): void
     {
         $string = $this->sanscrit;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedSanscrit, $convertedString);
     }
 
-    public function testForConvertingScottishGaelicString(): void
+    public function testForConvertingSimpleScottishGaelicString(): void
     {
         $string = $this->scottishGaelic;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedScottishGaelic, $convertedString);
     }
 
-    public function testForConvertingSerbianString(): void
+    public function testForConvertingSimpleSerbianString(): void
     {
         $string = $this->serbian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedSerbian, $convertedString);
     }
 
-    public function testForConvertingSlovakString(): void
+    public function testForConvertingSimpleSlovakString(): void
     {
         $string = $this->slovak;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedSlovak, $convertedString);
     }
 
-    public function testForConvertingSlovenianString(): void
+    public function testForConvertingSimpleSlovenianString(): void
     {
         $string = $this->slovenian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedSlovenian, $convertedString);
     }
 
-    public function testForConvertingSpanishString(): void
+    public function testForConvertingSimpleSpanishString(): void
     {
         $string = $this->spanish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedSpanish, $convertedString);
     }
 
-    public function testForConvertingSwedishString(): void
+    public function testForConvertingSimpleSwedishString(): void
     {
         $string = $this->swedish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedSwedish, $convertedString);
     }
 
-    public function testForConvertingTagalogString(): void
+    public function testForConvertingSimpleTagalogString(): void
     {
         $string = $this->tagalog;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedTagalog, $convertedString);
     }
 
-    public function testForConvertingThaiString(): void
+    public function testForConvertingSimpleThaiString(): void
     {
         $string = $this->thai;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedThai, $convertedString);
     }
 
-    public function testForConvertingTibetanString(): void
+    public function testForConvertingSimpleTibetanString(): void
     {
         $string = $this->tibetan;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedTibetan, $convertedString);
     }
 
-    public function testForConvertingTurkishString(): void
+    public function testForConvertingSimpleTurkishString(): void
     {
         $string = $this->turkish;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedTurkish, $convertedString);
     }
 
-    public function testForConvertingUkrainianString(): void
+    public function testForConvertingSimpleUkrainianString(): void
     {
         $string = $this->ukrainian;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedUkrainian, $convertedString);
     }
 
-    /**
-    Failed on یک
-     */
-    public function testForConvertingUrduString(): void
+    public function testForConvertingSimpleUrduString(): void
     {
         $string = $this->urdu;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedUrdu, $convertedString);
     }
 
-    public function testForConvertingUyghurString(): void
+    public function testForConvertingSimpleUyghurString(): void
     {
         $string = $this->uyghur;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedUyghur, $convertedString);
     }
 
-    public function testForConvertingYorubaString(): void
+    public function testForConvertingSimpleYorubaString(): void
     {
         $string = $this->yoruba;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedYoruba, $convertedString);
     }
 
-    public function testForConvertingWelshString(): void
+    public function testForConvertingSimpleWelshString(): void
     {
         $string = $this->welsh;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedWelsh, $convertedString);
     }
 
-    /**
-    Failed on đớn and đánh
-     */
-    public function testForConvertingVietnameseString(): void
+    public function testForConvertingSimpleVietnameseString(): void
     {
         $string = $this->vietnamese;
 
         $converter = new CharacterConverter();
-        $convertedString = $converter->convertStringToRtf($string);
+        $convertedString = $converter->findAndReplace($string);
 
         $this->assertEquals($this->convertedVietnamese, $convertedString);
     }

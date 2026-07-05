@@ -1,11 +1,17 @@
 <?php
 
-namespace Unit\ConvertStringTests;
+declare(strict_types=1);
 
-use Resources\Pangrams;
+namespace Wilf\PhpUtf8ToRtf\Tests\ConvertStringTests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Wilf\PhpUtf8ToRtf\CharacterConverter;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Pangrams;
 
-final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
+// phpcs:disable Generic.Files.LineLength.TooLong
+#[CoversClass(CharacterConverter::class)]
+final class ConvertSingleWordStringToRtfTest extends TestCase
 {
     use Pangrams;
 
@@ -16,7 +22,7 @@ final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $word = $converter->convertStringToRtf($string);
 
-        $this->assertEquals("The", $word);
+        $this->assertEquals('The', $word);
     }
 
     public function testForConvertingArabicStringToRtf(): void
@@ -236,7 +242,7 @@ final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $word = $converter->convertStringToRtf($string);
 
-        $this->assertEquals("Saya", $word);
+        $this->assertEquals('Saya', $word);
     }
 
     public function testForConvertingIrishStringToRtf(): void
@@ -256,7 +262,7 @@ final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $word = $converter->convertStringToRtf($string);
 
-        $this->assertEquals("Ma", $word);
+        $this->assertEquals('Ma', $word);
     }
 
     public function testForConvertingJapaneseStringToRtf(): void
@@ -296,7 +302,7 @@ final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $word = $converter->convertStringToRtf($string);
 
-        $this->assertEquals("Sic", $word);
+        $this->assertEquals('Sic', $word);
     }
 
     public function testForConvertingLatvianStringToRtf(): void
@@ -599,3 +605,4 @@ final class ConvertSingleWordStringToRtfTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("ng{\u432?}{\u7901?}i", $word);
     }
 }
+// phpcs:enable

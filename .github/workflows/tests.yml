@@ -1,0 +1,80 @@
+name: QA & Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  analysis-and-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php-version: '7.4'
+            dependencies: lowest
+          - php-version: '8.0'
+            dependencies: lowest
+          - php-version: '8.1'
+            dependencies: lowest
+          - php-version: '8.2'
+            dependencies: lowest
+          - php-version: '8.3'
+            dependencies: lowest
+          - php-version: '8.4'
+            dependencies: stable
+          - php-version: '8.5'
+            dependencies: stable
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: ${{ (matrix.php-version == '8.5' && matrix.dependencies == 'stable') && 'pcov' || 'none' }}
+          tools: composer:v2
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
+
+      - name: Install Dependencies
+        run: |
+          if [ "${{ matrix.dependencies }}" = "lowest" ]; then
+            composer update --prefer-lowest --prefer-dist --no-progress --no-interaction --ansi
+          else
+            composer update --prefer-dist --no-progress --no-interaction --ansi
+          fi
+
+      - name: Run All Quality Assurance & Tests
+        run: |
+          if [ "${{ matrix.php-version }}" = "7.4" ] || [ "${{ matrix.dependencies }}" = "lowest" ]; then
+            ./vendor/bin/phpunit --configuration phpunit.v9.xml --colors=always
+          else
+            composer test:all
+          fi
+
+      - name: Run Code Coverage (PHP 8.5 Stable Only)
+        if: matrix.php-version == '8.5' && matrix.dependencies == 'stable'
+        run: composer test:coverage-action
+
+      - name: Upload Coverage to Coveralls
+        if: matrix.php-version == '8.5' && matrix.dependencies == 'stable'
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/logs/clover.xml
