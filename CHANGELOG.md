@@ -4,8 +4,12 @@ ___________________________________
 ___________________________________
 ### v1.0.0
 * Initial release adding core functionality to locate & convert UTF8 characters
-___________________
-### v1.0.1
+___________________________________
+### v1.1.0
+* Swapped regex for more widely supported version
+* Added blank space handling
+___________________________________
+### v1.1.1
 * Added static analysis & fixed all issues
 * Updated phpunit
 * Fixed namespacing/autoloading of test suite
@@ -14,4 +18,4 @@ ___________________
 * Improved example RTF file generator
 * Updated class comments
 * Added Github actions
-___________________
+___________________________________
