@@ -14,8 +14,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
-        dependencies: [ stable ]
         include:
           - php-version: '7.4'
             dependencies: lowest
@@ -27,6 +25,10 @@ jobs:
             dependencies: lowest
           - php-version: '8.3'
             dependencies: lowest
+          - php-version: '8.4'
+            dependencies: stable
+          - php-version: '8.5'
+            dependencies: stable
 
     steps:
       - name: Checkout code
