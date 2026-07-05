@@ -1,12 +1,18 @@
 # PHP UTF8 To RTF
+
+[![QA & Tests](https://github.com/TomWilford/php-utf8-to-rtf/actions/workflows/tests.yml/badge.svg)](https://github.com/TomWilford/php-utf8-to-rtf/actions/workflows/tests.yml)
+[![Coverage Status](https://coveralls.io/repos/github/TomWilford/php-utf8-to-rtf/badge.svg?branch=main)](https://coveralls.io/github/TomWilford/php-utf8-to-rtf?branch=main)
+[![PHP Version](https://img.shields.io/badge/php-%5E7.4%20%7C%7C%20%5E8.0-8892bf.svg)](https://packagist.org/packages/TomWilford/php-utf8-to-rtf)
+[![License](https://img.shields.io/github/license/TomWilford/php-utf8-to-rtf)](LICENSE)
+
 ## Description
 A simple PHP class for converting UTF8 characters to an RTF safe version in a string.
 
 ## Installation
 `composer require tomwilford/php-utf8-to-rtf`
-   
+
 ## Usage
-> Requires PHP 7.0 or higher
+> Requires PHP 7.4 or higher
 
 Instantiate the converter using:
 
@@ -32,7 +38,7 @@ You can also convert an array of UTF8 strings:
 $convertedArray = $converter->convertArrayToRtf($arrayOfStrings);
 ```
 
-Finally, if you need to do any additional processing on the UTF8 characters before converting, 
+Finally, if you need to do any additional processing on the UTF8 characters before converting,
 you can extract them as an array using:
 ```php
 $arrayToConvert = $converter->locateCharactersInString($string);
@@ -40,16 +46,16 @@ $arrayToConvert = $converter->locateCharactersInString($string);
 
 ## Testing
 PHPUnit tests have been written using series of pangrams sourced online to try to best capture
-as many characters as possible in different languages being used in a natural way. Please see the 
-[Pangrams trait](tests/Resources/Pangrams.php) for the pangram sources' credits.
+as many characters as possible in different languages being used in a natural way. Please see the
+[Pangrams trait](tests/Trait/Pangrams.php) for the pangram sources' credits.
 
-There also is a short script that can [generate a test RTF file](tests/GenerateTestFile/generateTestFile.php) that
+There also is a short script that can [generate a test RTF file](tests/scripts/generate-test-rtf.php) that
 can be opened in a word processor to verify the results.
 
 ## Contributing
 Contributions are welcome, please see [CONTRIBUTING](CONTRIBUTING.md) for more information.
 
-## Software License 
+## Software License
 Copyright (c) 2022. Tom Wilford <hello@jollyblueman.com>
 All rights reserved.
 

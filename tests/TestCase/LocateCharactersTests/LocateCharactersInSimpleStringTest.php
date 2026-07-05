@@ -1,19 +1,22 @@
 <?php
 
-namespace Unit\LocateCharactersTests;
+declare(strict_types=1);
 
-use Resources\Pangrams;
-use Resources\Rtf;
+namespace Wilf\PhpUtf8ToRtf\Tests\LocateCharactersTests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Wilf\PhpUtf8ToRtf\CharacterConverter;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Pangrams;
 
-final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
+#[CoversClass(CharacterConverter::class)]
+final class LocateCharactersInSimpleStringTest extends TestCase
 {
-    use Rtf;
     use Pangrams;
 
-    public function testForNotLocatingEnglishInRtf(): void
+    public function testForNotLocatingRtfSafeCharacters(): void
     {
-        $string = $this->rtfStart . $this->english . $this->rtfEnd;
+        $string = '{ } ! ? # / \\';
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -21,9 +24,19 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(0, $characters);
     }
 
-    public function testForLocatingArabicCharactersInRtf(): void
+    public function testForNotLocatingEnglishInString(): void
     {
-        $string = $this->rtfStart . $this->arabic . $this->rtfEnd;
+        $string = $this->english;
+
+        $converter = new CharacterConverter();
+        $characters = $converter->locateCharactersInString($string);
+
+        $this->assertCount(0, $characters);
+    }
+
+    public function testForLocatingArabicCharactersInString(): void
+    {
+        $string = $this->arabic;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -31,9 +44,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(30, $characters);
     }
 
-    public function testForLocatingAzeriCharactersInRtf(): void
+    public function testForLocatingAzeriCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->azeri . $this->rtfEnd;
+        $string = $this->azeri;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -41,9 +54,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(7, $characters);
     }
 
-    public function testForLocatingBretonCharactersInRtf(): void
+    public function testForLocatingBretonCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->breton . $this->rtfEnd;
+        $string = $this->breton;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -51,9 +64,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $characters);
     }
 
-    public function testForLocatingBulgarianCharactersInRtf(): void
+    public function testForLocatingBulgarianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->bulgarian . $this->rtfEnd;
+        $string = $this->bulgarian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -61,9 +74,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(31, $characters);
     }
 
-    public function testForLocatingCatalanCharactersInRtf(): void
+    public function testForLocatingCatalanCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->catalan . $this->rtfEnd;
+        $string = $this->catalan;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -71,9 +84,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(14, $characters);
     }
 
-    public function testForLocatingChineseTraditionalCharactersInRtf(): void
+    public function testForLocatingChineseTraditionalCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->chineseTraditional . $this->rtfEnd;
+        $string = $this->chineseTraditional;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -81,9 +94,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(11, $characters);
     }
 
-    public function testForLocatingChineseSimplifiedCharactersInRtf(): void
+    public function testForLocatingChineseSimplifiedCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->chineseSimplified . $this->rtfEnd;
+        $string = $this->chineseSimplified;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -91,9 +104,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(9, $characters);
     }
 
-    public function testForLocatingCzechCharactersInRtf(): void
+    public function testForLocatingCzechCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->czech . $this->rtfEnd;
+        $string = $this->czech;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -101,9 +114,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(15, $characters);
     }
 
-    public function testForLocatingDanishCharactersInRtf(): void
+    public function testForLocatingDanishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->danish . $this->rtfEnd;
+        $string = $this->danish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -111,9 +124,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $characters);
     }
 
-    public function testForLocatingDzongkhaCharactersInRtf(): void
+    public function testForLocatingDzongkhaCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->dzongka . $this->rtfEnd;
+        $string = $this->dzongka;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -121,9 +134,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(44, $characters);
     }
 
-    public function testForLocatingEsperantoCharactersInRtf(): void
+    public function testForLocatingEsperantoCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->esperanto . $this->rtfEnd;
+        $string = $this->esperanto;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -131,9 +144,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(6, $characters);
     }
 
-    public function testForLocatingEstonianCharactersInRtf(): void
+    public function testForLocatingEstonianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->estonian . $this->rtfEnd;
+        $string = $this->estonian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -141,9 +154,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(6, $characters);
     }
 
-    public function testForLocatingFinnishCharactersInRtf(): void
+    public function testForLocatingFinnishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->finnish . $this->rtfEnd;
+        $string = $this->finnish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -151,9 +164,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(2, $characters);
     }
 
-    public function testForLocatingFrenchCharactersInRtf(): void
+    public function testForLocatingFrenchCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->french . $this->rtfEnd;
+        $string = $this->french;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -161,9 +174,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(5, $characters);
     }
 
-    public function testForLocatingGermanCharactersInRtf(): void
+    public function testForLocatingGermanCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->german . $this->rtfEnd;
+        $string = $this->german;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -171,9 +184,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(4, $characters);
     }
 
-    public function testForLocatingGreekCharactersInRtf(): void
+    public function testForLocatingGreekCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->greek . $this->rtfEnd;
+        $string = $this->greek;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -181,9 +194,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(40, $characters);
     }
 
-    public function testForLocatingHebrewCharactersInRtf(): void
+    public function testForLocatingHebrewCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->hebrew . $this->rtfEnd;
+        $string = $this->hebrew;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -191,9 +204,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(27, $characters);
     }
 
-    public function testForLocatingHindiCharactersInRtf(): void
+    public function testForLocatingHindiCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->hindi . $this->rtfEnd;
+        $string = $this->hindi;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -201,9 +214,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(35, $characters);
     }
 
-    public function testForLocatingHungarianCharactersInRtf(): void
+    public function testForLocatingHungarianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->hungarian . $this->rtfEnd;
+        $string = $this->hungarian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -211,9 +224,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(9, $characters);
     }
 
-    public function testForLocatingIcelandicCharactersInRtf(): void
+    public function testForLocatingIcelandicCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->icelandic . $this->rtfEnd;
+        $string = $this->icelandic;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -221,9 +234,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(10, $characters);
     }
 
-    public function testForLocatingIgboCharactersInRtf(): void
+    public function testForLocatingIgboCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->igbo . $this->rtfEnd;
+        $string = $this->igbo;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -231,9 +244,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(5, $characters);
     }
 
-    public function testForLocatingIndonesianCharactersInRtf(): void
+    public function testForLocatingIndonesianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->indonesian . $this->rtfEnd;
+        $string = $this->indonesian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -241,9 +254,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(0, $characters);
     }
 
-    public function testForLocatingIrishCharactersInRtf(): void
+    public function testForLocatingIrishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->irish . $this->rtfEnd;
+        $string = $this->irish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -251,9 +264,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(7, $characters);
     }
 
-    public function testForLocatingItalianCharactersInRtf(): void
+    public function testForLocatingItalianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->italian . $this->rtfEnd;
+        $string = $this->italian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -261,9 +274,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(0, $characters);
     }
 
-    public function testForLocatingJapaneseCharactersInRtf(): void
+    public function testForLocatingJapaneseCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->japanese . $this->rtfEnd;
+        $string = $this->japanese;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -271,9 +284,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(50, $characters);
     }
 
-    public function testForLocatingJavaneseCharactersInRtf(): void
+    public function testForLocatingJavaneseCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->javanese . $this->rtfEnd;
+        $string = $this->javanese;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -281,9 +294,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(23, $characters);
     }
 
-    public function testForLocatingKoreanCharactersInRtf(): void
+    public function testForLocatingKoreanCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->korean . $this->rtfEnd;
+        $string = $this->korean;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -291,9 +304,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(25, $characters);
     }
 
-    public function testForLocatingLatinCharactersInRtf(): void
+    public function testForLocatingLatinCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->latin . $this->rtfEnd;
+        $string = $this->latin;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -301,9 +314,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(0, $characters);
     }
 
-    public function testForLocatingLatvianCharactersInRtf(): void
+    public function testForLocatingLatvianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->latvian . $this->rtfEnd;
+        $string = $this->latvian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -311,9 +324,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(11, $characters);
     }
 
-    public function testForLocatingLithuanianCharactersInRtf(): void
+    public function testForLocatingLithuanianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->lithuanian . $this->rtfEnd;
+        $string = $this->lithuanian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -321,9 +334,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(9, $characters);
     }
 
-    public function testForLocatingLojbanCharactersInRtf(): void
+    public function testForLocatingLojbanCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->lojban . $this->rtfEnd;
+        $string = $this->lojban;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -331,9 +344,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(1, $characters);
     }
 
-    public function testForLocatingMacedonianCharactersInRtf(): void
+    public function testForLocatingMacedonianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->macedonian . $this->rtfEnd;
+        $string = $this->macedonian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -341,9 +354,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(31, $characters);
     }
 
-    public function testForLocatingMalayalamCharactersInRtf(): void
+    public function testForLocatingMalayalamCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->malayalam . $this->rtfEnd;
+        $string = $this->malayalam;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -351,9 +364,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(63, $characters);
     }
 
-    public function testForLocatingMapudungunCharactersInRtf(): void
+    public function testForLocatingMapudungunCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->mapudungun . $this->rtfEnd;
+        $string = $this->mapudungun;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -361,9 +374,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(1, $characters);
     }
 
-    public function testForLocatingMongolianCharactersInRtf(): void
+    public function testForLocatingMongolianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->mongolian . $this->rtfEnd;
+        $string = $this->mongolian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -371,9 +384,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(35, $characters);
     }
 
-    public function testForLocatingMyanmarCharactersInRtf(): void
+    public function testForLocatingMyanmarCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->myanmar . $this->rtfEnd;
+        $string = $this->myanmar;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -381,9 +394,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(50, $characters);
     }
 
-    public function testForLocatingNorwegianCharactersInRtf(): void
+    public function testForLocatingNorwegianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->norwegian . $this->rtfEnd;
+        $string = $this->norwegian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -391,9 +404,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $characters);
     }
 
-    public function testForLocatingPolishCharactersInRtf(): void
+    public function testForLocatingPolishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->polish . $this->rtfEnd;
+        $string = $this->polish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -401,9 +414,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(9, $characters);
     }
 
-    public function testForLocatingPortugueseCharactersInRtf(): void
+    public function testForLocatingPortugueseCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->portuguese . $this->rtfEnd;
+        $string = $this->portuguese;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -411,9 +424,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(15, $characters);
     }
 
-    public function testForLocatingRomanianCharactersInRtf(): void
+    public function testForLocatingRomanianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->romanian . $this->rtfEnd;
+        $string = $this->romanian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -421,9 +434,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(5, $characters);
     }
 
-    public function testForLocatingRussianCharactersInRtf(): void
+    public function testForLocatingRussianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->russian . $this->rtfEnd;
+        $string = $this->russian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -431,9 +444,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(34, $characters);
     }
 
-    public function testForLocatingSanscritCharactersInRtf(): void
+    public function testForLocatingSanscritCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->sanscrit . $this->rtfEnd;
+        $string = $this->sanscrit;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -441,9 +454,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(43, $characters);
     }
 
-    public function testForLocatingScottishGaelicCharactersInRtf(): void
+    public function testForLocatingScottishGaelicCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->scottishGaelic . $this->rtfEnd;
+        $string = $this->scottishGaelic;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -451,9 +464,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(6, $characters);
     }
 
-    public function testForLocatingSerbianCharactersInRtf(): void
+    public function testForLocatingSerbianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->serbian . $this->rtfEnd;
+        $string = $this->serbian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -461,9 +474,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(5, $characters);
     }
 
-    public function testForLocatingSlovakCharactersInRtf(): void
+    public function testForLocatingSlovakCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->slovak . $this->rtfEnd;
+        $string = $this->slovak;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -471,9 +484,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(16, $characters);
     }
 
-    public function testForLocatingSlovenianCharactersInRtf(): void
+    public function testForLocatingSlovenianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->slovenian . $this->rtfEnd;
+        $string = $this->slovenian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -481,9 +494,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $characters);
     }
 
-    public function testForLocatingSpanishCharactersInRtf(): void
+    public function testForLocatingSpanishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->spanish . $this->rtfEnd;
+        $string = $this->spanish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -491,9 +504,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(7, $characters);
     }
 
-    public function testForLocatingSwedishCharactersInRtf(): void
+    public function testForLocatingSwedishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->swedish . $this->rtfEnd;
+        $string = $this->swedish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -501,9 +514,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $characters);
     }
 
-    public function testForLocatingTagalogCharactersInRtf(): void
+    public function testForLocatingTagalogCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->tagalog . $this->rtfEnd;
+        $string = $this->tagalog;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -511,9 +524,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(1, $characters);
     }
 
-    public function testForLocatingThaiCharactersInRtf(): void
+    public function testForLocatingThaiCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->thai . $this->rtfEnd;
+        $string = $this->thai;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -521,9 +534,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(67, $characters);
     }
 
-    public function testForLocatingTibetanCharactersInRtf(): void
+    public function testForLocatingTibetanCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->tibetan . $this->rtfEnd;
+        $string = $this->tibetan;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -531,9 +544,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(43, $characters);
     }
 
-    public function testForLocatingTurkishCharactersInRtf(): void
+    public function testForLocatingTurkishCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->turkish . $this->rtfEnd;
+        $string = $this->turkish;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -541,9 +554,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(6, $characters);
     }
 
-    public function testForLocatingUkrainianCharactersInRtf(): void
+    public function testForLocatingUkrainianCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->ukrainian . $this->rtfEnd;
+        $string = $this->ukrainian;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -551,9 +564,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(33, $characters);
     }
 
-    public function testForLocatingUrduCharactersInRtf(): void
+    public function testForLocatingUrduCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->urdu . $this->rtfEnd;
+        $string = $this->urdu;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -561,9 +574,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(44, $characters);
     }
 
-    public function testForLocatingUyghurCharactersInRtf(): void
+    public function testForLocatingUyghurCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->uyghur . $this->rtfEnd;
+        $string = $this->uyghur;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -571,9 +584,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(33, $characters);
     }
 
-    public function testForLocatingYorubaCharactersInRtf(): void
+    public function testForLocatingYorubaCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->yoruba . $this->rtfEnd;
+        $string = $this->yoruba;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -581,9 +594,9 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(10, $characters);
     }
 
-    public function testForLocatingWelshCharactersInRtf(): void
+    public function testForLocatingWelshCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->welsh . $this->rtfEnd;
+        $string = $this->welsh;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);
@@ -593,7 +606,7 @@ final class LocateCharactersInRtfStringTest extends \PHPUnit\Framework\TestCase
 
     public function testForLocatingVietnameseCharactersInString(): void
     {
-        $string = $this->rtfStart . $this->vietnamese . $this->rtfEnd;
+        $string = $this->vietnamese;
 
         $converter = new CharacterConverter();
         $characters = $converter->locateCharactersInString($string);

@@ -1,11 +1,17 @@
 <?php
 
-namespace Unit\ConvertArrayTests;
+declare(strict_types=1);
 
-use Resources\Pangrams;
+namespace Wilf\PhpUtf8ToRtf\Tests\ConvertArrayTests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Wilf\PhpUtf8ToRtf\CharacterConverter;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Pangrams;
 
-final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
+// phpcs:disable Generic.Files.LineLength.TooLong
+#[CoversClass(CharacterConverter::class)]
+final class ConvertArrayToRtfTest extends TestCase
 {
     use Pangrams;
 
@@ -16,7 +22,7 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("The", $convertedWords);
+        $this->assertContains('The', $convertedWords);
     }
 
     public function testForConvertingArabicArrayToRtf(): void
@@ -76,7 +82,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u35222?}{\u37326?}{\u28961?}{\u38480?}{\u24291?}{\u65292?}{\u31383?}{\u22806?}{\u26377?}{\u34253?}{\u22825?}", $convertedWords);
+        $this->assertContains(
+            "{\u35222?}{\u37326?}{\u28961?}{\u38480?}{\u24291?}{\u65292?}{\u31383?}{\u22806?}{\u26377?}{\u34253?}{\u22825?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingChineseSimplifiedArrayToRtf(): void
@@ -86,7 +95,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u20013?}{\u22269?}{\u26234?}{\u36896?}{\u65292?}{\u24935?}{\u21450?}{\u20840?}{\u29699?}", $convertedWords);
+        $this->assertContains(
+            "{\u20013?}{\u22269?}{\u26234?}{\u36896?}{\u65292?}{\u24935?}{\u21450?}{\u20840?}{\u29699?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingCzechArrayToRtf(): void
@@ -116,7 +128,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u3944?}{\u3851?}{\u3937?}{\u3954?}{\u3906?}{\u3851?}{\u3921?}{\u3904?}{\u3938?}{\u3851?}{\u3928?}{\u3931?}{\u3962?}{\u3942?}{\u3851?}{\u3939?}{\u3942?}{\u3851?}{\u3936?}{\u3905?}{\u4018?}{\u3956?}{\u3908?}{\u3942?}{\u3851?}{\u3940?}{\u3962?}{\u3942?}{\u3851?}{\u3926?}{\u4019?}{\u3964?}{\u3936?}{\u3954?}{\u3851?}{\u3906?}{\u3919?}{\u3962?}{\u3938?}{\u3854?}", $convertedWords);
+        $this->assertContains(
+            "{\u3944?}{\u3851?}{\u3937?}{\u3954?}{\u3906?}{\u3851?}{\u3921?}{\u3904?}{\u3938?}{\u3851?}{\u3928?}{\u3931?}{\u3962?}{\u3942?}{\u3851?}{\u3939?}{\u3942?}{\u3851?}{\u3936?}{\u3905?}{\u4018?}{\u3956?}{\u3908?}{\u3942?}{\u3851?}{\u3940?}{\u3962?}{\u3942?}{\u3851?}{\u3926?}{\u4019?}{\u3964?}{\u3936?}{\u3954?}{\u3851?}{\u3906?}{\u3919?}{\u3962?}{\u3938?}{\u3854?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingEsperantoArrayToRtf(): void
@@ -236,7 +251,7 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("Saya", $convertedWords);
+        $this->assertContains('Saya', $convertedWords);
     }
 
     public function testForConvertingIrishArrayToRtf(): void
@@ -256,7 +271,7 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("Ma", $convertedWords);
+        $this->assertContains('Ma', $convertedWords);
     }
 
     public function testForConvertingJapaneseArrayToRtf(): void
@@ -266,7 +281,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u12356?}{\u12429?}{\u12399?}{\u12395?}{\u12411?}{\u12408?}{\u12392?}", $convertedWords);
+        $this->assertContains(
+            "{\u12356?}{\u12429?}{\u12399?}{\u12395?}{\u12411?}{\u12408?}{\u12392?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingJavaneseArrayToRtf(): void
@@ -296,7 +314,7 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("Sic", $convertedWords);
+        $this->assertContains('Sic', $convertedWords);
     }
 
     public function testForConvertingLatvianArrayToRtf(): void
@@ -336,7 +354,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u1029?}{\u1080?}{\u1076?}{\u1072?}{\u1088?}{\u1089?}{\u1082?}{\u1080?}", $convertedWords);
+        $this->assertContains(
+            "{\u1029?}{\u1080?}{\u1076?}{\u1072?}{\u1088?}{\u1089?}{\u1082?}{\u1080?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingMalayalamArrayToRtf(): void
@@ -366,7 +387,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u1065?}{\u1105?}{\u1090?}{\u1082?}{\u1072?}{\u1085?}{\u1099?}", $convertedWords);
+        $this->assertContains(
+            "{\u1065?}{\u1105?}{\u1090?}{\u1082?}{\u1072?}{\u1085?}{\u1099?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingMyanmarArrayToRtf(): void
@@ -376,7 +400,10 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedWords = $converter->convertArrayToRtf($words);
 
-        $this->assertContains("{\u4126?}{\u4142?}{\u4127?}{\u4141?}{\u4143?}{\u4128?}{\u4154?}{\u4121?}{\u4158?}", $convertedWords);
+        $this->assertContains(
+            "{\u4126?}{\u4142?}{\u4127?}{\u4141?}{\u4143?}{\u4128?}{\u4154?}{\u4121?}{\u4158?}",
+            $convertedWords
+        );
     }
 
     public function testForConvertingNorwegianArrayToRtf(): void
@@ -599,3 +626,4 @@ final class ConvertArrayToRtfTest extends \PHPUnit\Framework\TestCase
         $this->assertContains("ng{\u432?}{\u7901?}i", $convertedWords);
     }
 }
+// phpcs:enable

@@ -1,12 +1,17 @@
 <?php
 
-namespace Unit\FindAndReplaceTests;
+declare(strict_types=1);
 
-use Resources\Pangrams;
-use Resources\Rtf;
+namespace Wilf\PhpUtf8ToRtf\Tests\FindAndReplaceTests;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Wilf\PhpUtf8ToRtf\CharacterConverter;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Pangrams;
+use Wilf\PhpUtf8ToRtf\Tests\TestTrait\Rtf;
 
-final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
+#[CoversClass(CharacterConverter::class)]
+final class FindAndReplaceRtfStringTest extends TestCase
 {
     use Rtf;
     use Pangrams;
@@ -18,7 +23,10 @@ final class FindAndReplaceRtfStringTest extends \PHPUnit\Framework\TestCase
         $converter = new CharacterConverter();
         $convertedString = $converter->findAndReplace($string);
 
-        $this->assertEquals($this->rtfStart . "The quick brown fox jumps over the lazy dog!" . $this->rtfEnd, $convertedString);
+        $this->assertEquals(
+            $this->rtfStart . 'The quick brown fox jumps over the lazy dog!' . $this->rtfEnd,
+            $convertedString
+        );
     }
 
     public function testForConvertingRtfArabicString(): void

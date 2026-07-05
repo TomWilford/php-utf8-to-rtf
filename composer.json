@@ -1,14 +1,12 @@
 {
     "name": "tomwilford/php-utf8-to-rtf",
     "description": "A simple package to convert UTF8 characters to RTF",
-    "keywords": [],
-    "homepage": "https://jollyblueman.com",
+    "keywords": ["utf8", "rtf", "convert", "converter"],
     "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Tom Wilford",
-            "homepage": "https://jollyblueman.com",
-            "role": "Developer"
+            "homepage": "https://jollyblueman.com"
         }
     ],
     "support": {
@@ -19,8 +17,41 @@
             "Wilf\\PhpUtf8ToRtf\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Wilf\\PhpUtf8ToRtf\\Tests\\": "tests/TestCase",
+            "Wilf\\PhpUtf8ToRtf\\Tests\\TestTrait\\": "tests/Trait/"
+        }
+    },
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-mbstring": "*"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3",
+        "phpstan/phpstan": "^2",
+        "phpunit/phpunit": "^9.6 || ^13",
         "squizlabs/php_codesniffer": "*"
+    },
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 0
+    },
+    "scripts": {
+        "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --config=.cs.php --ansi",
+        "cs:fix": "php-cs-fixer fix --config=.cs.php --ansi --verbose",
+        "sniffer:check": "phpcs --standard=phpcs.xml",
+        "sniffer:fix": "phpcbf --standard=phpcs.xml",
+        "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
+        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --no-coverage",
+        "test:coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-text",
+        "test:report": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-html coverage-report",
+        "test:coverage-shield": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-clover build/logs/clover.xml",
+        "test:all": [
+            "@cs:check",
+            "@stan",
+            "@test",
+            "@sniffer:check"
+        ]
     }
 }
