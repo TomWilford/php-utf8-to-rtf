@@ -46,7 +46,7 @@
         "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --no-coverage",
         "test:coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-text",
         "test:report": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-html coverage-report",
-        "test:coverage-shield": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-clover build/logs/clover.xml",
+        "test:coverage-action": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-warnings --display-deprecations --coverage-clover build/logs/clover.xml",
         "test:all": [
             "@cs:check",
             "@stan",
